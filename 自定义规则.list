@@ -1,0 +1,84 @@
+# 这里可指定你需自定义放行
+# 为 Classical 类型 Text 格式
+
+# 示例: 仅删除下方注释号即可，注意是删除#
+#DOMAIN-SUFFIX,example.com
+#IP-CIDR,192.168.0.0/16
+#DOMAIN,dl.google.com
+
+DOMAIN,api.installer.xiaomi.com
+DOMAIN-SUFFIX,edu.cn
+DOMAIN,dash.pqjc.site
+
+
+
+
+PROCESS-NAME,com.hush.yamby
+PROCESS-NAME,cn.aqzscn.stream_music
+DOMAIN-SUFFIX,mrzgh.top
+DOMAIN-KEYWORD,mrzgh
+IP-CIDR,10.0.0.0/8
+IP-CIDR,172.16.0.0/12
+IP-CIDR,192.168.0.0/16
+IP-CIDR,119.8.31.0/24
+IP-CIDR,43.248.11.0/24
+IP-CIDR6,fc00::/7
+
+# 小米主题
+DOMAIN-SUFFIX,thm.market.xiaomi.com
+# 小米社区
+DOMAIN-SUFFIX,api.vip.miui.com
+# 讯飞输入法
+DOMAIN-SUFFIX,inputnlp.xfinfr.com
+DOMAIN-SUFFIX,imeclient.openspeech.cn
+
+# 清华
+DOMAIN,mirrors.tuna.tsinghua.edu.cn
+
+# 资源
+DOMAIN-SUFFIX,ghxi.com
+
+# 网盘
+DOMAIN-SUFFIX,189.cn
+DOMAIN-KEYWORD,lanzou
+
+# 谷歌
+#DOMAIN,services.googleapis.cn
+#DOMAIN,xn--ngstr-lra8j.com
+
+# 华为
+DOMAIN-KEYWORD,huawei
+DOMAIN-SUFFIX,huaweicloud.com
+
+# 京东
+PROCESS-NAME,com.jingdong.app.mall
+DOMAIN-SUFFIX,jd.com
+
+# 腾讯
+PROCESS-NAME-REGEX,com.tencent.*
+
+# 米哈游
+PROCESS-NAME-REGEX,com.mihoyo.*
+DOMAIN-SUFFIX,yuanshen.com
+DOMAIN-SUFFIX,mihoyo.com
+DOMAIN-SUFFIX,hoyoverse.com
+DOMAIN-KEYWORD,yuanshen
+DOMAIN-KEYWORD,mihoyo
+DOMAIN-KEYWORD,hoyoverse
+
+# 小红书
+PROCESS-PATH,com.xingin.xhs
+
+
+# 哔哩哔哩
+PROCESS-NAME,tv.danmaku.bili
+PROCESS-PATH,tv.danmaku.bili
+
+# 高德地图
+PROCESS-NAME,com.autonavi.minimap
+
+# 酷我
+PROCESS-NAME,cn.kuwo.player
+
+# 网易云音乐
+PROCESS-NAME,com.netease.cloudmusic
