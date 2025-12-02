@@ -267,7 +267,9 @@ proxy-groups:
 
 
 
-
+  - name: 酷安
+    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1013.png"
+    <<: *proxy_groups
 
 
 
@@ -498,6 +500,11 @@ rule-providers:
 
 
 
+  Coolapk_域:
+    <<: *Classical
+    path: ./rules/Coolapk.list
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Coolapk/Coolapk.list"
+
 
 
 
@@ -664,6 +671,8 @@ rules:
   - RULE-SET,domain_Ads_AWAvenue,广告拦截
   - RULE-SET,domain_Ads_CatsTeam,广告拦截
 
+  - RULE-SET,Coolapk_域,酷安
+  - PROCESS-NAME,com.coolapk.market,酷安
 
 
 
