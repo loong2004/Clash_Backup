@@ -162,7 +162,7 @@ dns:
     - "RULE-SET:GoogleFCM_域"
     - "+.3gppnetwork.org"
     - "+.xtracloud.net"
-    - "+.mtalk.google.com"
+    #- "+.mtalk.google.com"
   proxy-server-nameserver:
     - https://1.12.12.12:443/dns-query#🌐 本机·本地直连&h3=false
     - https://120.53.53.53:443/dns-query#🌐 本机·本地直连&h3=false
@@ -306,7 +306,9 @@ proxy-groups:
 
 
 
-
+  - name: YouTube音乐
+    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1020.png"
+    <<: *proxy_groups
 
 
 
@@ -552,7 +554,10 @@ rule-providers:
 
 
 
-
+  YouTubeMusic_域:
+    <<: *Classical
+    path: ./rules/YouTubeMusic.list
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/YouTubeMusic/YouTubeMusic.list"
 
 
 
@@ -734,8 +739,8 @@ rules:
 
   - PROCESS-NAME,com.kakao.talk,Kakao
   - RULE-SET,Kakao_域,Kakao
-
-
+  - RULE-SET,YouTubeMusic_域,YouTube音乐
+  - PROCESS-NAME,com.google.android.apps.youtube.music,YouTube音乐
 
 
 
