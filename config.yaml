@@ -119,7 +119,7 @@ sniffer:
 
 # 网卡模块
 tun:
-  enable: false
+  enable: true
   device: Meta
   stack: gvisor
   dns-hijack:
@@ -162,7 +162,6 @@ dns:
     - "RULE-SET:GoogleFCM_域"
     - "+.3gppnetwork.org"
     - "+.xtracloud.net"
-    #- "+.mtalk.google.com"
   proxy-server-nameserver:
     - https://1.12.12.12:443/dns-query#🌐 本机·本地直连&h3=false
     - https://120.53.53.53:443/dns-query#🌐 本机·本地直连&h3=false
@@ -800,6 +799,7 @@ rules:
 
   - RULE-SET,OpenAI_域,OpenAI
   - RULE-SET,OpenAI_IP,OpenAI,no-resolve
+  - PROCESS-NAME,com.openai.chatgpt,OpenAI
 
   - RULE-SET,Apple_域,Apple
   - RULE-SET,Apple_IP,Apple,no-resolve
