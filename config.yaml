@@ -74,14 +74,14 @@ proxy-providers: # ← 此函数位置请勿变动！此为模块更新时备份
     override:
       additional-prefix: "Main："
     path: ./proxies/1.主要地址.yaml
-    url: "https://service-avmn443l-1312645837.sh.apigw.tencentcs.com/api/v1/client/subscribe?token=3f197c417123f687a381b24036e4aed9"
+    url: "https://service-avmn443l-1312645837.sh"
 
   2.备用地址:
     <<: *p
     override:
       additional-prefix: "Minor："
     path: ./proxies/2.备用地址.yaml
-    url: "https://dash.pqjc.site/api/v1/client/subscribe?token=7b788603c58148d6c519b315e3f9f4f8"
+    url: "https://dash.pqjc.site/api/v1/client"
 
   3.额外地址:
     <<: *p
