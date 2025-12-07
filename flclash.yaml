@@ -710,6 +710,8 @@ rules:
 
   - RULE-SET,Google_域,Google
   - RULE-SET,Google_IP,Google,no-resolve
+  - PROCESS-NAME,com.google.android.apps.bard,Google
+  - PROCESS-NAME,com.google.android.googlequicksearchbox,Google
 
   - RULE-SET,Netflix_域,Netflix
   - RULE-SET,Netflix_IP,Netflix,no-resolve
