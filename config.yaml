@@ -713,6 +713,8 @@ rules:
   - RULE-SET,Instagram_域,Instagram
   - PROCESS-NAME,com.kakao.talk,Kakao
   - RULE-SET,Kakao_域,Kakao
+  - PROCESS-NAME,com.google.android.apps.bard,Google
+  - PROCESS-NAME,com.google.android.googlequicksearchbox,Google
   - PROCESS-NAME,com.instagram.barcelona,Threads
   - RULE-SET,Threads_域,Threads
   - RULE-SET,Telegram_域,Telegram
