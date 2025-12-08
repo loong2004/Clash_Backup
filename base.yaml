@@ -285,6 +285,8 @@ proxy-groups:
     <<: *proxy_groups
   - name: "🌏️ 社交媒体"
     <<: *proxy_groups
+  - name: "🌏️ OpenAI"
+    <<: *proxy_groups    
   - name: "🎵 Spotify"
     <<: *proxy_groups
   - name: "📢 谷歌FCM"
@@ -683,8 +685,8 @@ rules:
   - "RULE-SET,domain_Telegram,🌏️ 社交媒体"
   - "RULE-SET,ip_Telegram,🌏️ 社交媒体"
 
-  - "RULE-SET,domain_OpenAI,🎯 节点选择"
-  - "RULE-SET,ip_OpenAI,🎯 节点选择"
+  - "RULE-SET,domain_OpenAI,🌏️ OpenAI"
+  - "RULE-SET,ip_OpenAI,🌏️ OpenAI"
   
   - "RULE-SET,domain_Spotify,🎵 Spotify"
   - "RULE-SET,ip_Spotify,🎵 Spotify"
