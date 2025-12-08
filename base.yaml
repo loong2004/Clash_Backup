@@ -684,8 +684,8 @@ rules:
   - "RULE-SET,domain_Telegram,🌏️ 社交媒体"
   - "RULE-SET,ip_Telegram,🌏️ 社交媒体"
 
-  - "RULE-SET,domain_OpenAI,🎯 节点选择"
-  - "RULE-SET,ip_OpenAI,🎯 节点选择"
+  - "RULE-SET,domain_OpenAI,🇺🇸 美国节点"
+  - "RULE-SET,ip_OpenAI,🇺🇸 美国节点"
   
   - "RULE-SET,domain_Spotify,🎵 Spotify"
   - "RULE-SET,ip_Spotify,🎵 Spotify"
