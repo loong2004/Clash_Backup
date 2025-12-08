@@ -95,7 +95,7 @@ proxy-providers: # ← 此函数位置请勿变动！此为模块更新时备份
     override:
       additional-prefix: "Additi："
     path: ./proxies/3.额外地址.yaml
-    url: "订阅3"
+    url: ""
 
 # —————————
 # 节点记忆
@@ -144,16 +144,16 @@ tun:
     - com.tencent.mm
     - com.tencent.mobileqq
     # _____________________# 三星专供 ↓ 范围
-#    - com.samsung.android.messaging
-#    - com.samsung.android.app.telephonyui
-#    - com.samsung.android.dialer
-#    - com.samsung.android.incallui
-#    - com.samsung.android.smartcallprovider
-#    - com.samsung.android.intellivoiceservice
-#    - com.android.settings
-#    - com.qti.qcc
-#    - com.sec.epdg
-#    - com.sec.imsservice # 三星专供 ↑ 范围
+    - com.samsung.android.messaging
+    - com.samsung.android.app.telephonyui
+    - com.samsung.android.dialer
+    - com.samsung.android.incallui
+    - com.samsung.android.smartcallprovider
+    - com.samsung.android.intellivoiceservice
+    - com.android.settings
+    - com.qti.qcc
+    - com.sec.epdg
+    - com.sec.imsservice # 三星专供 ↑ 范围
     # 非三星用户不必理会，三星用户需自行取消注释
 
 # —————————
@@ -194,15 +194,16 @@ dns:
   direct-nameserver:
     # 腾讯/阿里兜底
     # 正确配置本地后可移除 否则会卡[可选]
+    - system
     - 1.12.12.12
     - 223.6.6.6
     # ----------------
     # 你的本地
     # 各大路由器/光猫默认 DNS
-    - 192.168.1.1    # 请确保当前局域网可通
+#    - 192.168.1.1    # 请确保当前局域网可通
     # SIM卡运营商 [下方替换成你的运营商 一般有鉴权]
-    - 221.130.13.133  # ← 替换成你想用的 或者删除
-    - 211.103.55.50 # ← 替换成你想用的 或者删除
+#    - 221.130.13.133  # ← 替换成你想用的 或者删除
+#    - 211.103.55.50 # ← 替换成你想用的 或者删除
 
 # —————————
 # ==================================================
