@@ -283,6 +283,8 @@ proxy-groups:
     <<: *proxy_groups
   - name: "🎶 TikTok"
     <<: *proxy_groups
+  - name: "🎹 日本分流"
+    <<: *proxy_groups
   - name: "🌏️ 社交媒体"
     <<: *proxy_groups
   - name: "🌏️ OpenAI"
@@ -528,6 +530,22 @@ rule-providers:
     url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Facebook/Facebook_OCD_IP.mrs"
     path: "./rule_provider/ip_Facebook.mrs"
 
+  Kakao_域:
+    <<: *classical
+    path: "./rule_provider/Kakao.list"
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/KakaoTalk/KakaoTalk.list"
+
+  Line_域:
+    <<: *classical
+    path: "./rule_provider/Line.list"
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Line/Line.list"
+
+  Instagram_域:
+    <<: *classical
+    path: "./rule_provider/Instagram.list"
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Instagram/Instagram.list"
+
+
   # Telegram 域名
   domain_Telegram:
     <<: *domain
@@ -680,8 +698,14 @@ rules:
   - "RULE-SET,ip_YouTube,🌏️ 社交媒体"
   - "RULE-SET,domain_Netflix,🌏️ 社交媒体"
   - "RULE-SET,ip_Netflix,🌏️ 社交媒体"
-  - "RULE-SET,domain_Facebook,🌏️ 社交媒体"
-  - "RULE-SET,ip_Facebook,🌏️ 社交媒体"
+  - "RULE-SET,domain_Facebook,🎹 日本分流"
+  - "RULE-SET,ip_Facebook,🎹 日本分流"
+  - "PROCESS-NAME,jp.naver.line.android,🎹 日本分流"
+  - "RULE-SET,Line_域,🎹 日本分流"
+  - "PROCESS-NAME,com.instagram.android,🎹 日本分流"
+  - "RULE-SET,Instagram_域,🎹 日本分流"
+  - "PROCESS-NAME,com.kakao.talk,🎹 日本分流"
+  - "RULE-SET,Kakao_域,🎹 日本分流"
   - "RULE-SET,domain_Telegram,🌏️ 社交媒体"
   - "RULE-SET,ip_Telegram,🌏️ 社交媒体"
 
