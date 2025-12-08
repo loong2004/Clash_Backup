@@ -5,4 +5,4 @@ config.yaml---Surfing
 
 Flclash.yaml---Flclash
 
-baseconfig.yaml---SAM
+base.yaml---SAM
