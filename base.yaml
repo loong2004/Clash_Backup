@@ -13,7 +13,7 @@ mode: rule
 # 日志级别 silent(静默)/error(仅输出发生错误至无法使用的日志)/warning(输出发生错误但不影响运行的日志)/info(输出一般运行的内容)/debug(尽可能的输出运行中所有的信息)
 log-level: error
 # 开启 IPv6 总开关，关闭阻断所有 IPv6 链接和屏蔽 DNS 请求 AAAA 记录
-ipv6: true
+ipv6: false
 # 禁用 TCP Keep Alive
 disable-keep-alive: true
 # 进程匹配模式
@@ -84,7 +84,7 @@ proxy-providers:
 dns:
   enable: true
   # 解析 IPV6
-  ipv6: true
+  ipv6: false
   # DNS 处理模式
   enhanced-mode: fake-ip
   #  IP 段设置
@@ -168,20 +168,6 @@ tun:
   strict-route: true
   # UDP NAT 过期时间
   udp-timeout: 300
-  # Android 排除应用包名
-  # exclude-package:
-    # 三星专用 >>>
-    #- com.samsung.android.messaging
-    #- com.samsung.android.app.telephonyui
-    #- com.samsung.android.dialer
-    #- com.samsung.android.incallui
-    #- com.samsung.android.smartcallprovider
-    #- com.samsung.android.intellivoiceservice
-    #- com.android.settings
-    #- com.qti.qcc
-    #- com.sec.epdg
-    #- com.sec.imsservice
-    # <<< end
 
 # 代理
 proxies:
@@ -683,7 +669,7 @@ rules:
   - "RULE-SET,domain_XiaoHongShu,🛰️ 全球直连"
   - "RULE-SET,domain_BiliBili,🛰️ 全球直连"
   - "RULE-SET,ip_BiliBili,🛰️ 全球直连"
-  - "RULE-SET,domain_Steam,🛰️ 全球直连"
+  - "RULE-SET,domain_Steam,🕹️ Steam"
 
   - "RULE-SET,domain_Speedtest,🚀 测速工具"
 
