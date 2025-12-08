@@ -654,7 +654,7 @@ rules:
   - "RULE-SET,classical_custom_reject,🚫 广告拦截"
 
   - "RULE-SET,classical_WebRTC,🖥️ WebRTC"
-  # - "RULE-SET,domain_Ads_antiad,🚫 广告拦截"
+  - "RULE-SET,domain_Ads_antiad,🚫 广告拦截"
   - "RULE-SET,domain_Ads_AWAvenue,🚫 广告拦截"
   - "RULE-SET,domain_Ads_CatsTeam,🚫 广告拦截"
   - "RULE-SET,domain_Ads_hagezi,🚫 广告拦截"
