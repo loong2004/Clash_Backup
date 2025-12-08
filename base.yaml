@@ -100,7 +100,6 @@ dns:
     - "+.3gppnetwork.org"
     - "+.xtracloud.net"
     - "+.market.xiaomi.com"
-    - "+.mtalk.google.com"
   # 用于 direct 出口域名解析的 DNS 服务器
   direct-nameserver:
     #- 127.0.0.1:3721
