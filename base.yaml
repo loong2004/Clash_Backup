@@ -100,7 +100,7 @@ dns:
     - "+.3gppnetwork.org"
     - "+.xtracloud.net"
     - "+.market.xiaomi.com"
-    - "+.mtalk.google.com"
+    #- "+.mtalk.google.com"
   # 用于 direct 出口域名解析的 DNS 服务器
   direct-nameserver:
     #- 127.0.0.1:3721
@@ -168,6 +168,20 @@ tun:
   strict-route: true
   # UDP NAT 过期时间
   udp-timeout: 300
+  # Android 排除应用包名
+  # exclude-package:
+    # 三星专用 >>>
+    #- com.samsung.android.messaging
+    #- com.samsung.android.app.telephonyui
+    #- com.samsung.android.dialer
+    #- com.samsung.android.incallui
+    #- com.samsung.android.smartcallprovider
+    #- com.samsung.android.intellivoiceservice
+    #- com.android.settings
+    #- com.qti.qcc
+    #- com.sec.epdg
+    #- com.sec.imsservice
+    # <<< end
 
 # 代理
 proxies:
@@ -269,12 +283,8 @@ proxy-groups:
     <<: *proxy_groups
   - name: "🎶 TikTok"
     <<: *proxy_groups
-  - name: "🎹 日本分流"
-    <<: *proxy_groups
   - name: "🌏️ 社交媒体"
     <<: *proxy_groups
-  - name: "🌏️ OpenAI"
-    <<: *proxy_groups    
   - name: "🎵 Spotify"
     <<: *proxy_groups
   - name: "📢 谷歌FCM"
@@ -397,8 +407,8 @@ rule-providers:
   # 自定义直连
   classical_custom_direct:
     <<: *classical
-    url: "https://raw.githubusercontent.com/loong2004/Clash_Backup/refs/heads/main/%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%84%E5%88%99.list"
-    path: "./rule_provider/自定义规则.list"
+    url: "https://tool.mrzgh.top/www/mayrain/clash/rule_provider/classical_custom_direct.list"
+    path: "./rule_provider/classical_custom_direct.list"
   # 自定义代理
   classical_custom_proxy:
     <<: *classical
@@ -419,7 +429,7 @@ rule-providers:
   domain_Ads_antiad:
     <<: *domain
     url: "https://anti-ad.net/mihomo.mrs"
-    path: ./rule_provider/domain_Ads_antiad.mrs
+    path: "./rule_provider/domain_Ads_antiad.mrs"
   # 秋风
   domain_Ads_AWAvenue:
     <<: *classical
@@ -515,22 +525,6 @@ rule-providers:
     <<: *ip
     url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Facebook/Facebook_OCD_IP.mrs"
     path: "./rule_provider/ip_Facebook.mrs"
-
-  Kakao_域:
-    <<: *classical
-    path: "./rule_provider/Kakao.list"
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/KakaoTalk/KakaoTalk.list"
-
-  Line_域:
-    <<: *classical
-    path: "./rule_provider/Line.list"
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Line/Line.list"
-
-  Instagram_域:
-    <<: *classical
-    path: "./rule_provider/Instagram.list"
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Instagram/Instagram.list"
-
 
   # Telegram 域名
   domain_Telegram:
@@ -653,7 +647,8 @@ rule-providers:
 rules:
   - "DST-PORT,53,🌐 DNS劫持"
   - "DST-PORT,853,🌐 DNS连接"
-  
+  - "RULE-SET,domain_Private,🛰️ 全球直连"
+  - "RULE-SET,ip_Private,🛰️ 全球直连"  
   - "RULE-SET,classical_blacklist_direct,🛰️ 全球直连"
   - "RULE-SET,classical_custom_direct,🛰️ 全球直连"
   - "RULE-SET,classical_custom_proxy,🎯 节点选择"
@@ -684,19 +679,13 @@ rules:
   - "RULE-SET,ip_YouTube,🌏️ 社交媒体"
   - "RULE-SET,domain_Netflix,🌏️ 社交媒体"
   - "RULE-SET,ip_Netflix,🌏️ 社交媒体"
-  - "RULE-SET,domain_Facebook,🎹 日本分流"
-  - "RULE-SET,ip_Facebook,🎹 日本分流"
-  - "PROCESS-NAME,jp.naver.line.android,🎹 日本分流"
-  - "RULE-SET,Line_域,🎹 日本分流"
-  - "PROCESS-NAME,com.instagram.android,🎹 日本分流"
-  - "RULE-SET,Instagram_域,🎹 日本分流"
-  - "PROCESS-NAME,com.kakao.talk,🎹 日本分流"
-  - "RULE-SET,Kakao_域,🎹 日本分流"
+  - "RULE-SET,domain_Facebook,🌏️ 社交媒体"
+  - "RULE-SET,ip_Facebook,🌏️ 社交媒体"
   - "RULE-SET,domain_Telegram,🌏️ 社交媒体"
   - "RULE-SET,ip_Telegram,🌏️ 社交媒体"
 
-  - "RULE-SET,domain_OpenAI,🌏️ OpenAI"
-  - "RULE-SET,ip_OpenAI,🌏️ OpenAI"
+  - "RULE-SET,domain_OpenAI,🎯 节点选择"
+  - "RULE-SET,ip_OpenAI,🎯 节点选择"
   
   - "RULE-SET,domain_Spotify,🎵 Spotify"
   - "RULE-SET,ip_Spotify,🎵 Spotify"
@@ -713,7 +702,6 @@ rules:
 
   - "RULE-SET,domain_cn,🛰️ 全球直连"
   - "RULE-SET,ip_cn,🛰️ 全球直连"
-  - "RULE-SET,domain_Private,🛰️ 全球直连"
-  - "RULE-SET,ip_Private,🛰️ 全球直连"
 
+  - "GEOIP,CN,🛰️ 全球直连"
   - "MATCH,🐟 漏网之鱼"
