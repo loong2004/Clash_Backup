@@ -545,6 +545,11 @@ rule-providers:
     url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/YouTube/YouTube_OCD_IP.mrs"
     path: "./rule_provider/ip_YouTube.mrs"
 
+  domain_Gemini:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.list"
+    path: "./rule_provider/Gemini.list"
+
   # Google 域名
   domain_Google:
     <<: *domain
@@ -689,6 +694,7 @@ rules:
 
   - "RULE-SET,domain_GoogleFCM,🛰️ 全球直连"
   - "RULE-SET,ip_GoogleFCM,🛰️ 全球直连"
+  - "RULE-SET,domain_Gemini,🇬 谷歌服务"
   - "RULE-SET,domain_Google,🇬 谷歌服务"
   - "RULE-SET,ip_Google,🇬 谷歌服务"
   
