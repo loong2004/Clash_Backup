@@ -271,9 +271,6 @@ proxy-groups:
     icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1004.png"
     <<: *proxy_groups
 
-  - name: 酷安
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1013.png"
-    <<: *proxy_groups
 
   # --- 国际社交与媒体 ---
   - name: Telegram
@@ -698,8 +695,8 @@ rules:
   - RULE-SET,domain_Ads_CatsTeam,广告拦截
 
   # --- 国内应用 ---
-  - RULE-SET,Coolapk_域,酷安
-  - PROCESS-NAME,com.coolapk.market,酷安
+  - PROCESS-NAME,com.coolapk.market,🌐 本机·本地直连
+  - RULE-SET,Coolapk_域,🌐 本机·本地直连
   - PROCESS-NAME,com.ss.android.ugc.aweme,抖音
   - RULE-SET,DouYin_域,抖音
   - PROCESS-NAME,com.xingin.xhs,小红书
