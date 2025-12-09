@@ -19,8 +19,9 @@ IP-CIDR6,fc00::/7
 # ==============================================
 # 通用 & 教育 & 站点
 # ==============================================
-# 清华镜像
+# 镜像
 DOMAIN,mirrors.tuna.tsinghua.edu.cn
+DOMAIN,mirrors.aliyun.com
 # 教育网
 DOMAIN-SUFFIX,edu.cn
 # 资源/图床/个人站
