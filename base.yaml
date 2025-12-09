@@ -284,6 +284,8 @@ proxy-groups:
     <<: *proxy_groups
   - name: "🌏️ 社交媒体"
     <<: *proxy_groups
+  - name: "🌏️ Meta"
+    <<: *proxy_groups
   - name: "🎵 Spotify"
     <<: *proxy_groups
   - name: "🇬 谷歌服务"
@@ -674,8 +676,8 @@ rules:
   - "RULE-SET,ip_YouTube,🌏️ 社交媒体"
   - "RULE-SET,domain_Netflix,🌏️ 社交媒体"
   - "RULE-SET,ip_Netflix,🌏️ 社交媒体"
-  - "RULE-SET,domain_Facebook,🌏️ 社交媒体"
-  - "RULE-SET,ip_Facebook,🌏️ 社交媒体"
+  - "RULE-SET,domain_Meta,🌏️ Meta"
+  - "RULE-SET,ip_Facebook,🌏️ Meta"
   - "RULE-SET,domain_Telegram,🌏️ 社交媒体"
   - "RULE-SET,ip_Telegram,🌏️ 社交媒体"
 
