@@ -259,9 +259,7 @@ proxy-groups:
       - 总模式
 
   # --- 国内应用 ---
-  - name: 小红书
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1002.png"
-    <<: *proxy_groups
+
 
   - name: 抖音
     icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1003.png"
@@ -699,8 +697,8 @@ rules:
   - RULE-SET,Coolapk_域,🌐 本机·本地直连
   - PROCESS-NAME,com.ss.android.ugc.aweme,抖音
   - RULE-SET,DouYin_域,抖音
-  - PROCESS-NAME,com.xingin.xhs,小红书
-  - RULE-SET,XiaoHongShu_域,小红书
+  - PROCESS-NAME,com.xingin.xhs,🌐 本机·本地直连
+  - RULE-SET,XiaoHongShu_域,🌐 本机·本地直连
   - PROCESS-NAME,tv.danmaku.bili,BiliBili
   - RULE-SET,BiliBili_域,BiliBili
   - RULE-SET,BiliBili_IP,BiliBili,no-resolve
