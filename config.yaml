@@ -629,6 +629,10 @@ rule-providers:
     <<: *Domain
     path: ./rules/GoogleFCM.mrs
     url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/GoogleFCM/GoogleFCM_OCD_Domain.mrs"
+  Gemini_域:
+    <<: *Classical
+    path: ./rules/Gemini.list
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.list"
   GoogleFCM_IP:
     <<: *IPCIDR
     path: ./rules/GoogleFCM_IP.mrs
@@ -741,6 +745,7 @@ rules:
   # --- 科技/系统服务 ---
   - DOMAIN,android.apis.google.com,Google
   - RULE-SET,GoogleFCM_域,GoogleFCM
+  - RULE-SET,Gemini_域,Google
   - RULE-SET,Google_域,Google
   - RULE-SET,Google_IP,Google,no-resolve
   - RULE-SET,Apple_域,Apple
