@@ -510,11 +510,11 @@ rule-providers:
     url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Spotify/Spotify_OCD_IP.mrs"
     path: "./rule_provider/ip_Spotify.mrs"
 
-  # Facebook 域名
-  domain_Facebook:
-    <<: *domain
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Facebook/Facebook_OCD_Domain.mrs"
-    path: "./rule_provider/domain_Facebook.mrs"
+  # Meta 域名
+  domain_Meta:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/loong2004/Clash_Backup/refs/heads/main/Meta.list"
+    path: "./rule_provider/Meta.list"
   # Facebook IP
   ip_Facebook:
     <<: *ip
