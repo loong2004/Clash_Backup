@@ -337,9 +337,6 @@ proxy-groups:
     icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1014.png"
     <<: *proxy_groups
 
-  - name: GoogleFCM
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1015.png"
-    <<: *proxy_groups
 
   - name: Apple
     icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1006.png"
@@ -744,7 +741,7 @@ rules:
 
   # --- 科技/系统服务 ---
   - DOMAIN,android.apis.google.com,Google
-  - RULE-SET,GoogleFCM_域,GoogleFCM
+  - RULE-SET,GoogleFCM_域,🌐 本机·本地直连
   - RULE-SET,Gemini_域,Google
   - RULE-SET,Google_域,Google
   - RULE-SET,Google_IP,Google,no-resolve
