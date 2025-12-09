@@ -479,6 +479,11 @@ rule-providers:
     path: ./rules/Kakao.list
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/KakaoTalk/KakaoTalk.list"
 
+  Gemini_域:
+    <<: *Classical
+    path: ./rules/Gemini.list
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.list"
+
   Line_域:
     <<: *Classical
     path: ./rules/Line.list
@@ -709,10 +714,11 @@ rules:
   - DOMAIN,android.apis.google.com,Google
   - RULE-SET,GoogleFCM_域,GoogleFCM
 
-  - RULE-SET,Google_域,Google
-  - RULE-SET,Google_IP,Google,no-resolve
   - PROCESS-NAME,com.google.android.apps.bard,Google
   - PROCESS-NAME,com.google.android.googlequicksearchbox,Google
+  - RULE-SET,Gemini_域,Google
+  - RULE-SET,Google_域,Google
+  - RULE-SET,Google_IP,Google,no-resolve
 
   - RULE-SET,Netflix_域,Netflix
   - RULE-SET,Netflix_IP,Netflix,no-resolve
