@@ -258,14 +258,7 @@ proxy-groups:
       - 🌐 本机·本地直连
       - 总模式
 
-  # --- 国内应用 ---
-
-
-  - name: 抖音
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1003.png"
-    <<: *proxy_groups
-
-
+ 
 
   # --- 国际社交与媒体 ---
   - name: Telegram
@@ -692,8 +685,8 @@ rules:
   # --- 国内应用 ---
   - PROCESS-NAME,com.coolapk.market,🌐 本机·本地直连
   - RULE-SET,Coolapk_域,🌐 本机·本地直连
-  - PROCESS-NAME,com.ss.android.ugc.aweme,抖音
-  - RULE-SET,DouYin_域,抖音
+  - PROCESS-NAME,com.ss.android.ugc.aweme,🌐 本机·本地直连
+  - RULE-SET,DouYin_域,🌐 本机·本地直连
   - PROCESS-NAME,com.xingin.xhs,🌐 本机·本地直连
   - RULE-SET,XiaoHongShu_域,🌐 本机·本地直连
   - PROCESS-NAME,tv.danmaku.bili,🌐 本机·本地直连
