@@ -733,9 +733,9 @@ rules:
   - RULE-SET,Apple_域,Apple
   - RULE-SET,Apple_IP,Apple,no-resolve
   - RULE-SET,Microsoft_域,Microsoft
+  - PROCESS-NAME,com.openai.chatgpt,OpenAI
   - RULE-SET,OpenAI_域,OpenAI
   - RULE-SET,OpenAI_IP,OpenAI,no-resolve
-  - PROCESS-NAME,com.openai.chatgpt,OpenAI
   - RULE-SET,GitHub_域,GitHub
   - RULE-SET,Cloudflare_域,Cloudflare
 
