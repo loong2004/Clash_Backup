@@ -285,7 +285,7 @@ proxy-groups:
     icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1015.png"
     <<: *proxy_groups
 
-  - name: Cloudfare
+  - name: Cloudflare
     icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1019.png"
     <<: *proxy_groups
 
@@ -504,9 +504,9 @@ rule-providers:
     path: ./rules/Threads.list
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Threads/Threads.list"
 
-  Cloudfare_域:
+  Cloudflare_域:
     <<: *Classical
-    path: ./rules/Cloudfare.list
+    path: ./rules/Cloudflare.list
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Cloudflare/Cloudflare.list"
 
   YouTubeMusic_域:
@@ -675,7 +675,7 @@ rules:
 
   - PROCESS-NAME,jp.naver.line.android,Line
   - RULE-SET,Line_域,Line
-  - RULE-SET,Cloudfare_域,Cloudfare
+  - RULE-SET,Cloudflare_域,Cloudflare
   - PROCESS-NAME,com.instagram.android,Instagram
   - RULE-SET,Instagram_域,Instagram
 
