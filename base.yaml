@@ -57,7 +57,7 @@ p: &p
   interval: 86400
   health-check:
     enable: true
-    url: "https://www.gstatic.com/generate_204"
+    url: "http://www.gstatic.com/generate_204"
     interval: 300
   proxy: 🔄 订阅更新
   header:
@@ -100,6 +100,7 @@ dns:
     - "+.3gppnetwork.org"
     - "+.xtracloud.net"
     - "+.market.xiaomi.com"
+    #- "+.mtalk.google.com"
   # 用于 direct 出口域名解析的 DNS 服务器
   direct-nameserver:
     #- 127.0.0.1:3721
@@ -129,23 +130,32 @@ sniffer:
   force-dns-mapping: true
   # 对所有未获取到域名的流量进行强制嗅探
   parse-pure-ip: true
-  # 使用嗅探结果作为实际访问
-  override-destination: true
   # 嗅探的协议设置
   sniff:
     HTTP:
       ports: [80, 8080-8880]
+      # 使用嗅探结果作为实际访问
+      override-destination: true
     TLS:
-      ports: [443, 5228, 8443]
+      ports: [443, 8443]
     QUIC:
       ports: [443, 8443]
   # 强制嗅探
   force-domain:
     - "+.v2ex.com"
+    - "+.netflix.com"
+    - "+.nflxvideo.net"
+    - "+.amazonaws.com"
+    - "+.media.dssott.com"
   # 跳过嗅探
   skip-domain:
     - "Mijia Cloud"
-
+    - "+.apple.com"
+    - "dlg.io.mi.com"
+    - "+.oray.com"
+    - "+.sunlogin.net"
+    - "+.push.apple.com"
+    
 # Tun 网卡
 tun:
   enable: true
@@ -201,21 +211,13 @@ proxy_groups: &proxy_groups
       - "🇰🇷 韩国节点"
       - "🇸🇬 新加坡节点"
       - "🇨🇦 加拿大节点"
-      - "🇻🇳 越南节点"
-      - "🇹🇭 泰国节点"
-      - "🇮🇳 印度节点"
-      - "🇿🇦 南非节点"
       - "🇺🇸 美国节点"
-      - "🇲🇽 墨西哥节点"
       - "🇬🇧 英国节点"
       - "🇫🇷 法国节点"
       - "🇩🇪 德国节点"
       - "🇳🇱 荷兰节点"
-      - "🇦🇺 澳大利亚节点"
-      - "🇧🇷 巴西节点"
-      - "🇸🇪 瑞典节点"
-      - "🇹🇷 土耳其节点"
-      - "🇦🇪 阿拉伯节点"
+      - "🇮🇳 印度节点"
+      - "🌀 其它节点"
       - "🛰️ 全球直连"
     # <<: *A
 CNproxy_groups: &CNproxy_groups
@@ -231,21 +233,13 @@ CNproxy_groups: &CNproxy_groups
       - "🇰🇷 韩国节点"
       - "🇸🇬 新加坡节点"
       - "🇨🇦 加拿大节点"
-      - "🇻🇳 越南节点"
-      - "🇹🇭 泰国节点"
-      - "🇮🇳 印度节点"
-      - "🇿🇦 南非节点"
       - "🇺🇸 美国节点"
-      - "🇲🇽 墨西哥节点"
       - "🇬🇧 英国节点"
       - "🇫🇷 法国节点"
       - "🇩🇪 德国节点"
       - "🇳🇱 荷兰节点"
-      - "🇦🇺 澳大利亚节点"
-      - "🇧🇷 巴西节点"
-      - "🇸🇪 瑞典节点"
-      - "🇹🇷 土耳其节点"
-      - "🇦🇪 阿拉伯节点"
+      - "🇮🇳 印度节点"
+      - "🌀 其它节点"
     # <<: *A
 proxy-groups:
   - name: "🎯 节点选择"
@@ -258,25 +252,17 @@ proxy-groups:
       - "🇰🇷 韩国节点"
       - "🇸🇬 新加坡节点"
       - "🇨🇦 加拿大节点"
-      - "🇻🇳 越南节点"
-      - "🇹🇭 泰国节点"
-      - "🇮🇳 印度节点"
-      - "🇿🇦 南非节点"
       - "🇺🇸 美国节点"
-      - "🇲🇽 墨西哥节点"
       - "🇬🇧 英国节点"
       - "🇫🇷 法国节点"
       - "🇩🇪 德国节点"
       - "🇳🇱 荷兰节点"
-      - "🇦🇺 澳大利亚节点"
-      - "🇧🇷 巴西节点"
-      - "🇸🇪 瑞典节点"
-      - "🇹🇷 土耳其节点"
-      - "🇦🇪 阿拉伯节点"
+      - "🇮🇳 印度节点"
+      - "🌀 其它节点"
       - "🛰️ 全球直连"
   - name: "♻️ 自动选择"
     type: url-test
-    exclude-filter: "中州|九州|🇨🇳"
+    exclude-filter: "中州|九州|🇨🇳|中国"
     <<: *A
   - name: "🇬 GitHub"
     <<: *proxy_groups
@@ -295,6 +281,8 @@ proxy-groups:
   - name: "Ⓜ️ 微软服务"
     <<: *CNproxy_groups
   - name: "🕹️ Steam"
+    <<: *CNproxy_groups
+  - name: "🚀 测速工具"
     <<: *CNproxy_groups
   - name: "🌐 DNS连接"
     <<: *proxy_groups
@@ -343,23 +331,8 @@ proxy-groups:
   - name: "🇨🇦 加拿大节点"
     filter: "加拿大|多伦多|Canada|CA|渥太华|温哥华|卡尔加里|🇨🇦"
     <<: *All
-  - name: "🇻🇳 越南节点"
-    filter: "越南|Vietnam|VN|🇻🇳"
-    <<: *All
-  - name: "🇹🇭 泰国节点"
-    filter: "泰国|Thailand|TH|🇹🇭"
-    <<: *All
-  - name: "🇮🇳 印度节点"
-    filter: "印度|孟买|海得拉巴|India|IN|🇮🇳"
-    <<: *All
-  - name: "🇿🇦 南非节点"
-    filter: "南非|约翰内斯堡|South Africa|ZA|🇿🇦"
-    <<: *All
   - name: "🇺🇸 美国节点"
     filter: "美|阿什本|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|UnitedStates|🇺🇸"
-    <<: *All
-  - name: "🇲🇽 墨西哥节点"
-    filter: "墨西哥|克雷塔罗|Mexico|MX|🇲🇽"
     <<: *All
   - name: "🇬🇧 英国节点"
     filter: "英国|伦敦|Great Britain|United Kiongdom|GB|🇬🇧"
@@ -373,20 +346,11 @@ proxy-groups:
   - name: "🇳🇱 荷兰节点"
     filter: "荷兰|Netherlands|NL|阿姆斯特丹|🇳🇱"
     <<: *All
-  - name: "🇦🇺 澳大利亚节点"
-    filter: "澳大利亚|悉尼|Australia|AU|🇦🇺"
+  - name: "🇮🇳 印度节点"
+    filter: "印度|孟买|海得拉巴|India|IN|🇮🇳"
     <<: *All
-  - name: "🇧🇷 巴西节点"
-    filter: "巴西|圣保罗|Brazil|BR|🇧🇷"
-    <<: *All
-  - name: "🇸🇪 瑞典节点"
-    filter: "瑞典|斯德哥尔摩|Sweden|SE|🇸🇪"
-    <<: *All
-  - name: "🇹🇷 土耳其节点"
-    filter: "土耳其|Turkey|Türkiye|TR|🇹🇷"
-    <<: *All
-  - name: "🇦🇪 阿拉伯节点"
-    filter: "阿拉伯|阿联酋|迪拜|United Arab Emirates|AE|🇦🇪"
+  - name: "🌀 其它节点"
+    exclude-filter: "港|HK|hk|Hong Kong|HongKong|hongkong|深港|🇭🇰|台|新北|彰化|TW|Taiwan|🇼🇸|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan|🇯🇵|KR|Korea|KOR|首尔|韩|韓|🇰🇷|新加坡|坡|狮城|SG|Singapore|🇸🇬|加拿大|多伦多|Canada|CA|渥太华|温哥华|卡尔加里|🇨🇦|美|阿什本|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|UnitedStates|🇺🇸|英国|伦敦|Great Britain|United Kiongdom|GB|🇬🇧|法国|France|FR|巴黎|🇫🇷|德国|Germany|DE|柏林|法兰克福|🇩🇪|荷兰|Netherlands|NL|阿姆斯特丹|🇳🇱|印度|孟买|海得拉巴|India|IN|🇮🇳"
     <<: *All
 
 # 规则集合
@@ -404,7 +368,7 @@ rule-providers:
   # 自定义直连
   classical_custom_direct:
     <<: *classical
-    url: "https://raw.githubusercontent.com/loong2004/Clash_Backup/refs/heads/main/%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%84%E5%88%99.list"
+    url: "https://raw.githubusercontent.com/loong2004/Clash_Backup/refs/heads/main/自定义规则.list"
     path: "./rule_provider/classical_custom_direct.list"
   # 自定义代理
   classical_custom_proxy:
@@ -512,7 +476,6 @@ rule-providers:
     url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Spotify/Spotify_OCD_IP.mrs"
     path: "./rule_provider/ip_Spotify.mrs"
 
-  # Meta 域名
   domain_Meta:
     <<: *classical
     url: "https://raw.githubusercontent.com/loong2004/Clash_Backup/refs/heads/main/Meta.list"
@@ -544,11 +507,6 @@ rule-providers:
     <<: *ip
     url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/YouTube/YouTube_OCD_IP.mrs"
     path: "./rule_provider/ip_YouTube.mrs"
-
-  domain_Gemini:
-    <<: *classical
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.list"
-    path: "./rule_provider/Gemini.list"
 
   # Google 域名
   domain_Google:
@@ -649,15 +607,14 @@ rule-providers:
 rules:
   - "DST-PORT,53,🌐 DNS劫持"
   - "DST-PORT,853,🌐 DNS连接"
-  - "RULE-SET,domain_Private,🛰️ 全球直连"
-  - "RULE-SET,ip_Private,🛰️ 全球直连"  
+  
   - "RULE-SET,classical_blacklist_direct,🛰️ 全球直连"
   - "RULE-SET,classical_custom_direct,🛰️ 全球直连"
   - "RULE-SET,classical_custom_proxy,🎯 节点选择"
   - "RULE-SET,classical_custom_reject,🚫 广告拦截"
 
   - "RULE-SET,classical_WebRTC,🖥️ WebRTC"
-  - "RULE-SET,domain_Ads_antiad,🚫 广告拦截"
+  # - "RULE-SET,domain_Ads_antiad,🚫 广告拦截"
   - "RULE-SET,domain_Ads_AWAvenue,🚫 广告拦截"
   - "RULE-SET,domain_Ads_CatsTeam,🚫 广告拦截"
   - "RULE-SET,domain_Ads_hagezi,🚫 广告拦截"
@@ -666,9 +623,10 @@ rules:
   - "RULE-SET,domain_XiaoHongShu,🛰️ 全球直连"
   - "RULE-SET,domain_BiliBili,🛰️ 全球直连"
   - "RULE-SET,ip_BiliBili,🛰️ 全球直连"
+  
   - "RULE-SET,domain_Steam,🕹️ Steam"
 
-  - "RULE-SET,domain_Speedtest,🛰️ 全球直连"
+  - "RULE-SET,domain_Speedtest,🚀 测速工具"
 
   - "RULE-SET,domain_GitHub,🇬 GitHub"
 
@@ -681,8 +639,8 @@ rules:
   - "RULE-SET,ip_YouTube,🌏️ 社交媒体"
   - "RULE-SET,domain_Netflix,🌏️ 社交媒体"
   - "RULE-SET,ip_Netflix,🌏️ 社交媒体"
-  - "RULE-SET,domain_Meta,🌏️ Meta"
   - "RULE-SET,ip_Facebook,🌏️ Meta"
+  - "RULE-SET,domain_Meta,🌏️ Meta"
   - "RULE-SET,domain_Telegram,🌏️ 社交媒体"
   - "RULE-SET,ip_Telegram,🌏️ 社交媒体"
 
@@ -694,7 +652,6 @@ rules:
 
   - "RULE-SET,domain_GoogleFCM,🛰️ 全球直连"
   - "RULE-SET,ip_GoogleFCM,🛰️ 全球直连"
-  - "RULE-SET,domain_Gemini,🇬 谷歌服务"
   - "RULE-SET,domain_Google,🇬 谷歌服务"
   - "RULE-SET,ip_Google,🇬 谷歌服务"
   
@@ -705,6 +662,7 @@ rules:
 
   - "RULE-SET,domain_cn,🛰️ 全球直连"
   - "RULE-SET,ip_cn,🛰️ 全球直连"
+  - "RULE-SET,domain_Private,🛰️ 全球直连"
+  - "RULE-SET,ip_Private,🛰️ 全球直连,no-resolve"
 
-  - "GEOIP,CN,🛰️ 全球直连"
   - "MATCH,🐟 漏网之鱼"
