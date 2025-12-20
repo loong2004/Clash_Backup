@@ -301,6 +301,10 @@ proxy-groups:
     icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1012.png"
     <<: *proxy_groups
 
+  - name: Duckduckgo
+    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1022.png"
+    <<: *proxy_groups
+
   - name: YouTube音乐
     icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1020.png"
     <<: *proxy_groups
@@ -502,6 +506,11 @@ rule-providers:
     <<: *Classical
     path: ./rules/Coolapk.list
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Coolapk/Coolapk.list"
+
+  Duckduckgo_域:
+    <<: *Classical
+    path: ./rules/Duckduckgo.list
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Duckduckgo/Duckduckgo.list"
 
   Threads_域:
     <<: *Classical
@@ -714,6 +723,7 @@ rules:
   - RULE-SET,TikTok_域,TikTok
 
   # --- 流媒体/游戏 ---
+  - RULE-SET,Duckduckgo_域,Duckduckgo
   - PROCESS-NAME,com.google.android.apps.youtube.music,YouTube音乐
   - RULE-SET,YouTubeMusic_域,YouTube音乐
   - RULE-SET,YouTube_域,YouTube
