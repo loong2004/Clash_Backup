@@ -13,7 +13,7 @@ mode: rule
 # 日志级别 silent(静默)/error(仅输出发生错误至无法使用的日志)/warning(输出发生错误但不影响运行的日志)/info(输出一般运行的内容)/debug(尽可能的输出运行中所有的信息)
 log-level: error
 # 开启 IPv6 总开关，关闭阻断所有 IPv6 链接和屏蔽 DNS 请求 AAAA 记录
-ipv6: false
+ipv6: true
 # 禁用 TCP Keep Alive
 disable-keep-alive: true
 # 进程匹配模式
@@ -57,7 +57,7 @@ p: &p
   interval: 86400
   health-check:
     enable: true
-    url: "http://www.gstatic.com/generate_204"
+    url: "https://www.gstatic.com/generate_204"
     interval: 300
   proxy: 🔄 订阅更新
   header:
@@ -84,7 +84,7 @@ proxy-providers:
 dns:
   enable: true
   # 解析 IPV6
-  ipv6: false
+  ipv6: true
   # DNS 处理模式
   enhanced-mode: fake-ip
   #  IP 段设置
@@ -177,6 +177,8 @@ tun:
   strict-route: true
   # UDP NAT 过期时间
   udp-timeout: 300
+  # 禁用 ICMP 转发
+  disable-icmp-forwarding: true
   # Android 排除应用包名
   # exclude-package:
     # 三星专用 >>>
@@ -270,9 +272,9 @@ proxy-groups:
     <<: *proxy_groups
   - name: "🌏️ 社交媒体"
     <<: *proxy_groups
-  - name: "🌏️ Meta"
-    <<: *proxy_groups
   - name: "🎵 Spotify"
+    <<: *proxy_groups
+  - name: "📢 谷歌FCM"
     <<: *proxy_groups
   - name: "🇬 谷歌服务"
     <<: *proxy_groups
@@ -368,44 +370,24 @@ rule-providers:
   # 自定义直连
   classical_custom_direct:
     <<: *classical
-    url: "https://raw.githubusercontent.com/loong2004/Clash_Backup/refs/heads/main/自定义规则.list"
+    url: "https://raw.githubusercontent.com/5MayRain/Rule/main/Mihomo/classical_direct.list"
     path: "./rule_provider/classical_custom_direct.list"
   # 自定义代理
-  classical_custom_proxy:
-    <<: *classical
-    url: "https://tool.mrzgh.top/www/mayrain/clash/rule_provider/classical_custom_proxy.list"
-    path: "./rule_provider/classical_custom_proxy.list"
+  domain_custom_proxy:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/5MayRain/Rule/main/Mihomo/domain_proxy.mrs" 
+    path: "./rule_provider/domain_custom_proxy.mrs"
   # 自定义拦截
   classical_custom_reject:
     <<: *classical
-    url: "https://tool.mrzgh.top/www/mayrain/clash/rule_provider/classical_custom_reject.list"
-    path: "./rule_provider/classical_custom_reject.list"
+    url: "https://raw.githubusercontent.com/5MayRain/Rule/main/Mihomo/classical_reject.list" 
+    path: "./rule_provider/classical_custom_rejectt.list"
 
   # WebRTC
   classical_WebRTC:
     <<: *classical
     url: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/rules/WebRTC.list"
     path: "./rule_provider/classical_WebRTC.list"
-  # anti-AD
-  domain_Ads_antiad:
-    <<: *domain
-    url: "https://anti-ad.net/mihomo.mrs"
-    path: "./rule_provider/domain_Ads_antiad.mrs"
-  # 秋风
-  domain_Ads_AWAvenue:
-    <<: *classical
-    path: ./rule_provider/domain_Ads_AWAvenue.list
-    url: "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge-RULE-SET.list"
-  # Cats-Team
-  domain_Ads_CatsTeam:
-    <<: *domain
-    path: ./rule_provider/domain_Ads_CatsTeam.mrs
-    url: "https://gp.adrules.top/adrules-mihomo.mrs"
-  # hagezi
-  domain_Ads_hagezi:
-    <<: *domain_text
-    path: ./rule_provider/domain_Ads_hagezi.txt
-    url: "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro-onlydomains.txt"
     
   # fakeip-filter
   fakeip-filter:
@@ -476,10 +458,11 @@ rule-providers:
     url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Spotify/Spotify_OCD_IP.mrs"
     path: "./rule_provider/ip_Spotify.mrs"
 
-  domain_Meta:
-    <<: *classical
-    url: "https://raw.githubusercontent.com/loong2004/Clash_Backup/refs/heads/main/Meta.list"
-    path: "./rule_provider/Meta.list"
+  # Facebook 域名
+  domain_Facebook:
+    <<: *domain
+    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Facebook/Facebook_OCD_Domain.mrs"
+    path: "./rule_provider/domain_Facebook.mrs"
   # Facebook IP
   ip_Facebook:
     <<: *ip
@@ -608,16 +591,12 @@ rules:
   - "DST-PORT,53,🌐 DNS劫持"
   - "DST-PORT,853,🌐 DNS连接"
   
-  - "RULE-SET,classical_blacklist_direct,🛰️ 全球直连"
+  - "RULE-SET,classical_blacklist_direct,🛰️ 全球直连"  
   - "RULE-SET,classical_custom_direct,🛰️ 全球直连"
-  - "RULE-SET,classical_custom_proxy,🎯 节点选择"
+  - "RULE-SET,domain_custom_proxy,🎯 节点选择"
   - "RULE-SET,classical_custom_reject,🚫 广告拦截"
 
   - "RULE-SET,classical_WebRTC,🖥️ WebRTC"
-  # - "RULE-SET,domain_Ads_antiad,🚫 广告拦截"
-  - "RULE-SET,domain_Ads_AWAvenue,🚫 广告拦截"
-  - "RULE-SET,domain_Ads_CatsTeam,🚫 广告拦截"
-  - "RULE-SET,domain_Ads_hagezi,🚫 广告拦截"
 
   - "RULE-SET,domain_DouYin,🛰️ 全球直连"
   - "RULE-SET,domain_XiaoHongShu,🛰️ 全球直连"
@@ -639,19 +618,19 @@ rules:
   - "RULE-SET,ip_YouTube,🌏️ 社交媒体"
   - "RULE-SET,domain_Netflix,🌏️ 社交媒体"
   - "RULE-SET,ip_Netflix,🌏️ 社交媒体"
-  - "RULE-SET,ip_Facebook,🌏️ Meta"
-  - "RULE-SET,domain_Meta,🌏️ Meta"
+  - "RULE-SET,domain_Facebook,🌏️ 社交媒体"
+  - "RULE-SET,ip_Facebook,🌏️ 社交媒体"
   - "RULE-SET,domain_Telegram,🌏️ 社交媒体"
   - "RULE-SET,ip_Telegram,🌏️ 社交媒体"
 
-  - "RULE-SET,domain_OpenAI,🇺🇸 美国节点"
-  - "RULE-SET,ip_OpenAI,🇺🇸 美国节点"
+  - "RULE-SET,domain_OpenAI,🎯 节点选择"
+  - "RULE-SET,ip_OpenAI,🎯 节点选择"
   
   - "RULE-SET,domain_Spotify,🎵 Spotify"
   - "RULE-SET,ip_Spotify,🎵 Spotify"
 
-  - "RULE-SET,domain_GoogleFCM,🛰️ 全球直连"
-  - "RULE-SET,ip_GoogleFCM,🛰️ 全球直连"
+  - "RULE-SET,domain_GoogleFCM,📢 谷歌FCM"
+  - "RULE-SET,ip_GoogleFCM,📢 谷歌FCM"
   - "RULE-SET,domain_Google,🇬 谷歌服务"
   - "RULE-SET,ip_Google,🇬 谷歌服务"
   
