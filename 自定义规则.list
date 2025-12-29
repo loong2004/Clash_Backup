@@ -41,6 +41,9 @@ DOMAIN-SUFFIX,gtimg.com     # 腾讯
 DOMAIN-SUFFIX,qlogo.cn      # 腾讯头像 (QQ头像等)
 DOMAIN-SUFFIX,126.net       # 网易
 DOMAIN-SUFFIX,127.net       # 网易
+DOMAIN-SUFFIX,uomg.com    # 随机音乐 API
+DOMAIN-SUFFIX,rshah.org   # GitHub 图表 API
+DOMAIN-SUFFIX,wttr.in     # 天气 API
 
 # --- 其他常见图床/资源 ---
 DOMAIN-SUFFIX,s2.loli.net   # SM.MS 图床 (国内有节点)
