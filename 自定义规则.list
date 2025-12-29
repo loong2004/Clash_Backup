@@ -1,13 +1,9 @@
-# ==============================================
-# 自定义放行规则 (Classical / Text)
-# ==============================================
-# 示例: 仅删除下方注释号即可启用
-# DOMAIN-SUFFIX,example.com
-# IP-CIDR,192.168.0.0/16
-# DOMAIN,dl.google.com
+# =============================================================
+# Loong's Terminal - 完整分流规则整合 (2025版)
+# =============================================================
 
 # ==============================================
-# 局域网 & 特殊 IP 段
+# 1. 局域网 & 特殊 IP 段 (直接连接)
 # ==============================================
 IP-CIDR,10.0.0.0/8
 IP-CIDR,172.16.0.0/12
@@ -17,96 +13,92 @@ IP-CIDR,43.248.11.0/24
 IP-CIDR6,fc00::/7
 
 # ==============================================
-# 通用 & 教育 & 站点
+# 2. 导航页核心功能 API (必须放行以维持页面正常)
 # ==============================================
-# 镜像
-DOMAIN,mirrors.tuna.tsinghua.edu.cn
-DOMAIN,mirrors.aliyun.com
-# 教育网
-DOMAIN-SUFFIX,edu.cn
-# --- 国内公共静态资源 CDN (加速 JS/CSS/字体) ---
-DOMAIN-SUFFIX,elemecdn.com  # 饿了么CDN (你的代码里用了这个！必填)
-DOMAIN-SUFFIX,bootcdn.net   # BootCDN (你的代码里用了这个！必填)
-DOMAIN-SUFFIX,bootcss.com   # BootCDN 旧域名
-DOMAIN-SUFFIX,staticfile.org # 七牛云维护的静态库，速度很快
-DOMAIN-SUFFIX,baomitu.com   # 360 前端静态资源库 (75CDN)
-DOMAIN-SUFFIX,bytecdntp.com # 字节跳动静态资源
-DOMAIN-SUFFIX,upaiyun.com   # 又拍云
-
-# --- 互联网大厂静态资源 (图床/图标/字体常用) ---
-DOMAIN-SUFFIX,alicdn.com    # 阿里 CDN (Iconfont 图标库通常在这里)
-DOMAIN-SUFFIX,bdstatic.com  # 百度静态资源
-DOMAIN-SUFFIX,gtimg.cn      # 腾讯静态资源
-DOMAIN-SUFFIX,gtimg.com     # 腾讯
-DOMAIN-SUFFIX,qlogo.cn      # 腾讯头像 (QQ头像等)
-DOMAIN-SUFFIX,126.net       # 网易
-DOMAIN-SUFFIX,127.net       # 网易
-DOMAIN-SUFFIX,uomg.com    # 随机音乐 API
-DOMAIN-SUFFIX,rshah.org   # GitHub 图表 API
-DOMAIN-SUFFIX,wttr.in     # 天气 API
-
-# --- 其他常见图床/资源 ---
-DOMAIN-SUFFIX,s2.loli.net   # SM.MS 图床 (国内有节点)
-DOMAIN-SUFFIX,i0.hdslb.com  # B站图床
-DOMAIN-SUFFIX,hdslb.com
+# 随机二次元背景 API 
+DOMAIN-SUFFIX,paugram.com
+# 一言 (Hitokoto) 问候语 
+DOMAIN-SUFFIX,hitokoto.cn
+DOMAIN-KEYWORD,hitokoto
+# 天气服务 (wttr.in) 
+DOMAIN-SUFFIX,wttr.in
+# GitHub 贡献图表
+DOMAIN-SUFFIX,rshah.org
 
 # ==============================================
-# 手机品牌 & 系统服务
+# 3. 前端静态资源 CDN (加速 JS/CSS/字体加载)
 # ==============================================
-# 小米 (安装器/主题/社区)
-DOMAIN,api.installer.xiaomi.com
-DOMAIN-SUFFIX,thm.market.xiaomi.com
-DOMAIN-SUFFIX,api.vip.miui.com
-# 华为
-DOMAIN-KEYWORD,huawei
-DOMAIN-SUFFIX,huaweicloud.com
-# 讯飞输入法
-DOMAIN-SUFFIX,inputnlp.xfinfr.com
-DOMAIN-SUFFIX,imeclient.openspeech.cn
+# 页面使用的主要 CDN
+DOMAIN-SUFFIX,elemecdn.com
+DOMAIN-SUFFIX,bootcdn.net
+DOMAIN-SUFFIX,bootcss.com
+DOMAIN-SUFFIX,staticfile.org
+DOMAIN-SUFFIX,baomitu.com
+DOMAIN-SUFFIX,bytecdntp.com
+DOMAIN-SUFFIX,upaiyun.com
+
+# 大厂静态资源 (Iconfont/字体)
+DOMAIN-SUFFIX,alicdn.com
+DOMAIN-SUFFIX,bdstatic.com
+DOMAIN-SUFFIX,gtimg.cn
+DOMAIN-SUFFIX,gtimg.com
+DOMAIN-SUFFIX,qlogo.cn
 
 # ==============================================
-# 社交 & 媒体应用
+# 4. 媒体与音乐服务 (APlayer/Meting)
 # ==============================================
-# 哔哩哔哩 (Bilibili)
-PROCESS-NAME,tv.danmaku.bili
-PROCESS-PATH,tv.danmaku.bili
-
-# 小红书
-PROCESS-PATH,com.xingin.xhs
-
-# 音乐应用 (网易云/酷我/其他)
+# 音乐解析与网易云资源 
+DOMAIN-SUFFIX,meting.js
+DOMAIN-SUFFIX,126.net
+DOMAIN-SUFFIX,127.net
+DOMAIN-SUFFIX,uomg.com
 PROCESS-NAME,com.netease.cloudmusic
 PROCESS-NAME,cn.kuwo.player
 PROCESS-NAME,cn.aqzscn.stream_music
 
-# 腾讯 (Tencent) - 包含微信/QQ等正则匹配
+# ==============================================
+# 5. 个人站点域名 (根据卡片链接整合)
+# ==============================================
+DOMAIN-SUFFIX,885123.xyz
+
+# ==============================================
+# 6. 社交/工具/大厂服务 (原有规则)
+# ==============================================
+# 镜像与教育网
+DOMAIN,mirrors.tuna.tsinghua.edu.cn
+DOMAIN,mirrors.aliyun.com
+DOMAIN-SUFFIX,edu.cn
+
+# 手机品牌系统服务 (小米/华为)
+DOMAIN,api.installer.xiaomi.com
+DOMAIN-SUFFIX,thm.market.xiaomi.com
+DOMAIN-SUFFIX,api.vip.miui.com
+DOMAIN-KEYWORD,huawei
+DOMAIN-SUFFIX,huaweicloud.com
+
+# 常用 App 进程 (哔哩哔哩/小红书/腾讯/高德/京东)
+PROCESS-NAME,tv.danmaku.bili
+PROCESS-PATH,tv.danmaku.bili
+PROCESS-PATH,com.xingin.xhs
 PROCESS-NAME-REGEX,com.tencent.*
+PROCESS-NAME,com.autonavi.minimap
+PROCESS-NAME,com.jingdong.app.mall
+DOMAIN-SUFFIX,jd.com
 
-# Hush (Yamby)
-PROCESS-NAME,com.hush.yamby
-
-# ==============================================
 # 游戏 (米哈游)
-# ==============================================
 PROCESS-NAME-REGEX,com.mihoyo.*
 DOMAIN-SUFFIX,yuanshen.com
 DOMAIN-SUFFIX,mihoyo.com
 DOMAIN-SUFFIX,hoyoverse.com
 DOMAIN-KEYWORD,yuanshen
-DOMAIN-KEYWORD,mihoyo
-DOMAIN-KEYWORD,hoyoverse
 
-# ==============================================
-# 购物 & 生活 & 工具
-# ==============================================
-# 京东
-PROCESS-NAME,com.jingdong.app.mall
-DOMAIN-SUFFIX,jd.com
-
-# 高德地图
-PROCESS-NAME,com.autonavi.minimap
-
-# 网盘 (电信/蓝奏)
+# 工具与网盘
 DOMAIN-SUFFIX,189.cn
 DOMAIN-KEYWORD,lanzou
+DOMAIN-SUFFIX,s2.loli.net
+DOMAIN-SUFFIX,hdslb.com
 
+# ==============================================
+# 7. 自定义放行规则 (手动补充区域)
+# ==============================================
+# DOMAIN,dl.google.com
