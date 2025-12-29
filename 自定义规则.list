@@ -24,18 +24,28 @@ DOMAIN,mirrors.tuna.tsinghua.edu.cn
 DOMAIN,mirrors.aliyun.com
 # 教育网
 DOMAIN-SUFFIX,edu.cn
-# 资源/图床/个人站
-DOMAIN-SUFFIX,ghxi.com
-DOMAIN-SUFFIX,mrzgh.top
-DOMAIN-SUFFIX,yuny.tv
-DOMAIN-KEYWORD,mrzgh
-DOMAIN-KEYWORD,bootcdn
-DOMAIN,s2.loli.net
-DOMAIN,dash.pqjc.site
-DOMAIN,xpagecn.com
-DOMAIN-KEYWORD,xpagecn
-DOMAIN,spaceship.com
-DOMAIN,nav.885123.xyz
+# --- 国内公共静态资源 CDN (加速 JS/CSS/字体) ---
+DOMAIN-SUFFIX,elemecdn.com  # 饿了么CDN (你的代码里用了这个！必填)
+DOMAIN-SUFFIX,bootcdn.net   # BootCDN (你的代码里用了这个！必填)
+DOMAIN-SUFFIX,bootcss.com   # BootCDN 旧域名
+DOMAIN-SUFFIX,staticfile.org # 七牛云维护的静态库，速度很快
+DOMAIN-SUFFIX,baomitu.com   # 360 前端静态资源库 (75CDN)
+DOMAIN-SUFFIX,bytecdntp.com # 字节跳动静态资源
+DOMAIN-SUFFIX,upaiyun.com   # 又拍云
+
+# --- 互联网大厂静态资源 (图床/图标/字体常用) ---
+DOMAIN-SUFFIX,alicdn.com    # 阿里 CDN (Iconfont 图标库通常在这里)
+DOMAIN-SUFFIX,bdstatic.com  # 百度静态资源
+DOMAIN-SUFFIX,gtimg.cn      # 腾讯静态资源
+DOMAIN-SUFFIX,gtimg.com     # 腾讯
+DOMAIN-SUFFIX,qlogo.cn      # 腾讯头像 (QQ头像等)
+DOMAIN-SUFFIX,126.net       # 网易
+DOMAIN-SUFFIX,127.net       # 网易
+
+# --- 其他常见图床/资源 ---
+DOMAIN-SUFFIX,s2.loli.net   # SM.MS 图床 (国内有节点)
+DOMAIN-SUFFIX,i0.hdslb.com  # B站图床
+DOMAIN-SUFFIX,hdslb.com
 
 # ==============================================
 # 手机品牌 & 系统服务
