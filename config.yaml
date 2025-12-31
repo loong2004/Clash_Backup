@@ -507,6 +507,11 @@ rule-providers:
     path: ./rules/Coolapk.list
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Coolapk/Coolapk.list"
 
+  Paypal_域:
+    <<: *Classical
+    path: ./rules/Paypal_域.list
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/PayPal/PayPal.list"
+
   Duckduckgo_域:
     <<: *Classical
     path: ./rules/Duckduckgo.list
@@ -705,6 +710,7 @@ rules:
   # --- 国际应用/社交 ---
   - PROCESS-NAME,jp.naver.line.android,Line
   - RULE-SET,Line_域,Line
+  - RULE-SET,Paypal_域,🌐 本机·本地直连
   - PROCESS-NAME,com.instagram.android,Instagram
   - RULE-SET,Instagram_域,Instagram
   - PROCESS-NAME,com.kakao.talk,Kakao
