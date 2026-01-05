@@ -742,6 +742,7 @@ rules:
 
   # --- 科技/系统服务 ---
   - DOMAIN,android.apis.google.com,Google
+  - DOMAIN-KEYWORD,mtalk.google.com,🌐 本机·本地直连
   - RULE-SET,GoogleFCM_域,🌐 本机·本地直连
   - RULE-SET,Gemini_域,Google
   - RULE-SET,Google_域,Google
