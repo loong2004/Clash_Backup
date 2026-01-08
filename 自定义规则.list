@@ -74,6 +74,7 @@ DOMAIN,api.installer.xiaomi.com
 DOMAIN-SUFFIX,thm.market.xiaomi.com
 DOMAIN-SUFFIX,api.vip.miui.com
 DOMAIN-KEYWORD,huawei
+DOMAIN-KEYWORD,mtalk.google.com
 DOMAIN-SUFFIX,huaweicloud.com
 
 # 常用 App 进程 (哔哩哔哩/小红书/腾讯/高德/京东)
