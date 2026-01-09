@@ -224,6 +224,9 @@ proxy-groups:
   - name: Telegram
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Telegram.svg"
     <<: *proxy_groups
+  - name: Instagram
+    icon: "https://www.svgrepo.com/show/217758/instagram.svg"
+    <<: *proxy_groups
   - name: Discord
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Discord.svg"
     <<: *proxy_groups
@@ -370,6 +373,10 @@ rule-providers:
     <<: *IPCIDR
     path: ./rules/BiliBili_IP.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/bilibili.mrs"
+  Instagram_域:
+    <<: *Domain
+    path: ./rules/Instagram.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/instagram.mrs"
   Steam_域:
     <<: *Domain
     path: ./rules/Steam.mrs
@@ -495,6 +502,7 @@ rules:
   - RULE-SET,Netflix_IP,Netflix,no-resolve
   - RULE-SET,Spotify_域,Spotify
   - RULE-SET,Spotify_IP,Spotify,no-resolve
+  - RULE-SET,Instagram_域,Instagram
   - RULE-SET,Facebook_域,Facebook
   - RULE-SET,Facebook_IP,Facebook,no-resolve
   - RULE-SET,OpenAI_域,OpenAI
