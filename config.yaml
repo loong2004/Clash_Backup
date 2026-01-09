@@ -195,6 +195,7 @@ proxy_groups: &proxy_groups
       - ALL·美国地区
       - ALL·日本地区
       - ALL·狮城地区
+      - ALL·韩国地区
       - ALL·其它地区
       - ⛔️ 禁止·拒绝连接
       - 🌐 本机·本地直连
@@ -213,6 +214,7 @@ proxy-groups:
       - ALL·香港地区  
       - ALL·美国地区
       - ALL·狮城地区
+      - ALL·韩国地区
       - ALL·其它地区
       - 🌐 本机·本地直连
   - name: 订阅更新
@@ -314,6 +316,10 @@ proxy-groups:
   - name: ALL·狮城地区
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Singapore.svg"
     filter: "^(?=.*(新加坡|坡|狮城|SG|Singapore)).*$"
+    <<: *All
+  - name: ALL·韩国地区
+    icon: "https://www.svgrepo.com/show/405608/flag-for-flag-south-korea.svg"
+    filter: "^(?=.*(韩|首尔|KR|Korea|South Korea)).*$"
     <<: *All
   - name: ALL·其它地区
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Globe.svg"
