@@ -421,6 +421,10 @@ rule-providers:
     <<: *IPCIDR
     path: ./rules/Google_IP.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/google.mrs"
+  Gemini_域:
+    <<: *Domain
+    path: ./rules/Gemini.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google-gemini.mrs"
   GoogleFCM_域:
     <<: *Domain
     path: ./rules/GoogleFCM.mrs
@@ -496,6 +500,7 @@ rules:
   - RULE-SET,YouTube_域,YouTube
   - DOMAIN-KEYWORD,mtalk.google.com,🌐 本机·本地直连
   - RULE-SET,GoogleFCM_域,🌐 本机·本地直连
+  - RULE-SET,Gemini_域,Google
   - RULE-SET,Google_域,Google
   - RULE-SET,Google_IP,Google,no-resolve
   - RULE-SET,Netflix_域,Netflix
