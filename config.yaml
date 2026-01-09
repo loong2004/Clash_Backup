@@ -472,6 +472,10 @@ rule-providers:
     <<: *Domain
     path: ./rules/GitHub.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/github.mrs"
+  Threads_域:
+    <<: *Domain
+    path: ./rules/Threads.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/threads.mrs"
   Twitter_域:
     <<: *Domain
     path: ./rules/Twitter.mrs
@@ -518,6 +522,7 @@ rules:
   - RULE-SET,Netflix_IP,Netflix,no-resolve
   - RULE-SET,Spotify_域,Spotify
   - RULE-SET,Spotify_IP,Spotify,no-resolve
+  - RULE-SET,Threads_域,Threads
   - RULE-SET,Instagram_域,Instagram
   - RULE-SET,Facebook_域,Facebook
   - RULE-SET,Facebook_IP,Facebook,no-resolve
