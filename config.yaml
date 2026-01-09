@@ -224,6 +224,9 @@ proxy-groups:
   - name: Telegram
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Telegram.svg"
     <<: *proxy_groups
+  - name: KakaoTalk
+    icon: "https://www.svgrepo.com/show/343566/kakao-talk-communication-interaction-connection-conversation.svg"
+    <<: *proxy_groups
   - name: Cloudflare
     icon: "https://www.vectorlogo.zone/logos/cloudflare/cloudflare-ar21.svg"
     <<: *proxy_groups
@@ -433,6 +436,10 @@ rule-providers:
     <<: *Domain
     path: ./rules/Microsoft.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft.mrs"
+  Kakao_域:
+    <<: *Domain
+    path: ./rules/Kakao.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/kakao.mrs"
   Apple_域:
     <<: *Domain
     path: ./rules/Apple.mrs
@@ -506,6 +513,7 @@ rules:
   - RULE-SET,Steam_域,🌐 本机·本地直连
   - RULE-SET,GitHub_域,GitHub
   - RULE-SET,Discord_域,Discord
+  - RULE-SET,Kakao_域,KakaoTalk
   - RULE-SET,TikTok_域,TikTok
   - RULE-SET,Twitter_域,Twitter(X)
   - RULE-SET,Twitter_IP,Twitter(X),no-resolve
