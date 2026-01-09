@@ -227,9 +227,6 @@ proxy-groups:
   - name: Cloudflare
     icon: "https://www.vectorlogo.zone/logos/cloudflare/cloudflare-ar21.svg"
     <<: *proxy_groups
-  - name: Instagram
-    icon: "https://www.svgrepo.com/show/217758/instagram.svg"
-    <<: *proxy_groups
   - name: Discord
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Discord.svg"
     <<: *proxy_groups
@@ -248,8 +245,8 @@ proxy-groups:
   - name: Google
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Google.svg"
     <<: *proxy_groups
-  - name: Facebook
-    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Facebook.svg"
+  - name: Meta
+    icon: "https://www.svgrepo.com/show/424916/meta-logo-facebook.svg"
     <<: *proxy_groups
   - name: OpenAI
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/OpenAI.svg"
@@ -522,10 +519,10 @@ rules:
   - RULE-SET,Netflix_IP,Netflix,no-resolve
   - RULE-SET,Spotify_域,Spotify
   - RULE-SET,Spotify_IP,Spotify,no-resolve
-  - RULE-SET,Threads_域,Threads
-  - RULE-SET,Instagram_域,Instagram
-  - RULE-SET,Facebook_域,Facebook
-  - RULE-SET,Facebook_IP,Facebook,no-resolve
+  - RULE-SET,Threads_域,Meta
+  - RULE-SET,Instagram_域,Meta
+  - RULE-SET,Facebook_域,Meta
+  - RULE-SET,Facebook_IP,Meta,no-resolve
   - RULE-SET,OpenAI_域,OpenAI
   - RULE-SET,Cloudflare_域,Cloudflare
   - RULE-SET,Cloudflare_IP,Cloudflare,no-resolve
