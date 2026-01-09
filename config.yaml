@@ -224,6 +224,9 @@ proxy-groups:
   - name: Telegram
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Telegram.svg"
     <<: *proxy_groups
+  - name: Cloudflare
+    icon: "https://www.vectorlogo.zone/logos/cloudflare/cloudflare-ar21.svg"
+    <<: *proxy_groups
   - name: Instagram
     icon: "https://www.svgrepo.com/show/217758/instagram.svg"
     <<: *proxy_groups
@@ -457,6 +460,14 @@ rule-providers:
     <<: *Domain
     path: ./rules/Discord.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/discord.mrs"
+  Cloudflare_域:
+    <<: *Domain
+    path: ./rules/Cloudflare.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cloudflare.mrs"
+  Cloudflare_IP:
+    <<: *IPCIDR
+    path: ./rules/Cloudflare_IP.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/cloudflare.mrs"
   GitHub_域:
     <<: *Domain
     path: ./rules/GitHub.mrs
@@ -511,6 +522,8 @@ rules:
   - RULE-SET,Facebook_域,Facebook
   - RULE-SET,Facebook_IP,Facebook,no-resolve
   - RULE-SET,OpenAI_域,OpenAI
+  - RULE-SET,Cloudflare_域,Cloudflare
+  - RULE-SET,Cloudflare_IP,Cloudflare,no-resolve
   - RULE-SET,Apple_域,🌐 本机·本地直连
   - RULE-SET,Apple_IP,🌐 本机·本地直连,no-resolve
   - RULE-SET,Microsoft_域,🌐 本机·本地直连
