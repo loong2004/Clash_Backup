@@ -551,7 +551,7 @@ rules:
   - RULE-SET,Facebook_域,Meta
   - RULE-SET,Facebook_IP,Meta,no-resolve
   - RULE-SET,OpenAI_域,OpenAI
-  - RULE-SET,PayPal_域,总模式
+  - RULE-SET,PayPal_域,🌐 本机·本地直连
   - RULE-SET,Cloudflare_域,Cloudflare
   - RULE-SET,Cloudflare_IP,Cloudflare,no-resolve
   - RULE-SET,Apple_域,🌐 本机·本地直连
