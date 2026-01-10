@@ -140,6 +140,8 @@ dns:
   ipv6: false
   listen: "[::]:1053"
   enhanced-mode: fake-ip # redir-host
+  prefer-h3: true          # 优先使用 HTTP/3 连接 DNS 服务器
+  cache-algorithm: arc    # 使用更先进的自适应缓存算法
 #  fake-ip-filter-mode: whitelist # blacklist/whitelist
   fake-ip-range: 172.20.0.1/16
   fake-ip-filter:
@@ -148,6 +150,9 @@ dns:
     - "RULE-SET:GoogleFCM_域"
     - "+.3gppnetwork.org"
     - "+.xtracloud.net"
+    - "+.nflxvideo.net"     # Netflix 视频流防检测
+    - "+.media.netflix.com"
+    - "+.googlevideo.com"   # 提升 YouTube 稳定性
   proxy-server-nameserver:
     - https://1.12.12.12:443/dns-query#🌐 本机·本地直连&h3=false
     - https://120.53.53.53:443/dns-query#🌐 本机·本地直连&h3=false
