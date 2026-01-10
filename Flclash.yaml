@@ -24,15 +24,13 @@ tcp-concurrent: true
 log-level: silent
 find-process-mode: always
 global-client-fingerprint: chrome
-external-controller: 0.0.0.0:9090 # 切勿修改端口会影响状态栏磁贴
+external-controller: 0.0.0.0:9090 #修改端口后，如使用磁贴请重新正确设置API端口
 external-ui-url: "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip"
 external-ui: "./webroot/Zash/"
 secret: "" # 面板访问密码，如在公网访问建议设置
-
 # —————————
 # ==== Tips
 # 1. 修改配置文件保存时，建议重启服务/重载配置.
-
 # —————————
 # 健康检查
 p: &p
@@ -50,51 +48,44 @@ p: &p
         - "ClashforWindows/0.19.23"
         - "clash.meta"
         - "mihomo"
-
 # —————————
 # 订阅地址相关
 A: &A
-  filter: "^(?!.*(套餐|重置|剩余|到期|订阅|群|账户|流量|有效期|时间|官网|失联|余额|使用|若无网络|咨询客服)).*$"
+  filter: "^(?!.*(套餐|重置|剩余|到期|订阅|群|账户|流量|有效期|时间|官网|失联|余额)).*$"
   use:
   - 1.主要地址
   - 2.备用地址
   - 3.额外地址
-
 All: &All
   type: url-test
   use:
   - 1.主要地址
   - 2.备用地址
   - 3.额外地址
-
 proxy-providers: # ← 此函数位置请勿变动！此为模块更新时备份恢复订阅变量范围 ↓
   1.主要地址: # 如遇订阅加载不出来，请尝试切换ua
     <<: *p
     override:
       additional-prefix: "Main："
     path: ./proxies/1.主要地址.yaml
-    url: "订阅1"
-
+    url: "此处引入您的Clash订阅链接地址"
   2.备用地址:
     <<: *p
     override:
       additional-prefix: "Minor："
     path: ./proxies/2.备用地址.yaml
-    url: "订阅2"
-
+    url: "此处引入您的Clash订阅链接地址"
   3.额外地址:
     <<: *p
     override:
       additional-prefix: "Additi："
     path: ./proxies/3.额外地址.yaml
-    url: "订阅3"
-
+    url: "此处引入您的Clash订阅链接地址"
 # —————————
 # 节点记忆
 profile: # ← 此函数位置请勿变动！此为模块更新时备份恢复订阅变量范围 ↑
   store-selected: true
   store-fake-ip: true
-
 # —————————
 # 嗅探模块
 sniffer:
@@ -113,7 +104,6 @@ sniffer:
     - "+.v2ex.com"
   skip-domain: # 如遇需内部通信的应用请放行该域名
     - "Mijia Cloud"
-
 # —————————
 # 网卡模块
 tun:
@@ -128,11 +118,10 @@ tun:
   strict-route: true
   auto-redirect: false
   auto-detect-interface: true
-  exclude-package: # 如黑白名单这里需排除
-    - com.tencent.mm
-    - com.tencent.mobileqq
-    # _____________________# 三星专供 ↓ 范围
-#    - com.samsung.android.messaging
+  # 如使用黑白名单这里需排除
+  # exclude-package 排除 / include-package 包含
+  exclude-package:
+#    - com.samsung.android.messaging # 三星专供 ↓ 范围
 #    - com.samsung.android.app.telephonyui
 #    - com.samsung.android.dialer
 #    - com.samsung.android.incallui
@@ -142,17 +131,16 @@ tun:
 #    - com.qti.qcc
 #    - com.sec.epdg
 #    - com.sec.imsservice # 三星专供 ↑ 范围
-    # 非三星用户不必理会，三星用户需自行取消注释
-
+    # 非三星用户不必理会，三星用户需自行取消注释 不可使用include-package
 # —————————
 # DNS模块
 # 请勿随意变动！
 dns:
   enable: true
-  use-system-hosts: true
   ipv6: false
-  listen: 0.0.0.0:1053
+  listen: "[::]:1053"
   enhanced-mode: fake-ip # redir-host
+#  fake-ip-filter-mode: whitelist # blacklist/whitelist
   fake-ip-range: 172.20.0.1/16
   fake-ip-filter:
     - "RULE-SET:CN_域"
@@ -181,24 +169,20 @@ dns:
   direct-nameserver:
     # 腾讯/阿里兜底
     # 正确配置本地后可移除 否则会卡[可选]
-    - system
     - 1.12.12.12
     - 223.6.6.6
     # ----------------
     # 你的本地
     # 各大路由器/光猫默认 DNS
-#    - 192.168.1.1    # 请确保当前局域网可通
+    # - 192.168.1.1    # 请确保当前局域网可通
     # SIM卡运营商 [下方替换成你的运营商 一般有鉴权]
-#    - 221.130.13.133  # ← 替换成你想用的 或者删除
-#    - 211.103.55.50 # ← 替换成你想用的 或者删除
-
+    # - 120.80.80.80  # ← 替换成你想用的 或者删除
+    # - 221.5.88.88   # ← 替换成你想用的 或者删除
 # —————————
-# 代理集合
 proxies:
   - {name: 🌐 本机·本地直连, type: direct, udp: true}
   - {name: ⛔️ 禁止·拒绝连接, type: reject}
   - {name: 🌐 DNS_Hijack, type: dns}
-
 proxy_groups: &proxy_groups
     type: select
     proxies:
@@ -211,13 +195,12 @@ proxy_groups: &proxy_groups
       - ALL·美国地区
       - ALL·日本地区
       - ALL·狮城地区
+      - ALL·韩国地区
       - ALL·其它地区
       - ⛔️ 禁止·拒绝连接
       - 🌐 本机·本地直连
     <<: *A
-
 # —————————
-# 策略组列表
 proxy-groups:
   - name: 总模式
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/All.svg"
@@ -231,188 +214,120 @@ proxy-groups:
       - ALL·香港地区  
       - ALL·美国地区
       - ALL·狮城地区
+      - ALL·韩国地区
       - ALL·其它地区
       - 🌐 本机·本地直连
-
   - name: 订阅更新
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1001.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Update.svg"
     type: select
     proxies:
       - 🌐 本机·本地直连
       - 总模式
-
-  - name: 小红书
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1002.png"
-    <<: *proxy_groups
-
-  - name: 抖音
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1003.png"
-    <<: *proxy_groups
-
-  - name: BiliBili
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1004.png"
-    <<: *proxy_groups
-
-  - name: Steam
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1005.png"
-    <<: *proxy_groups
-
-  - name: Apple
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1006.png"
-    <<: *proxy_groups
-
-  - name: Microsoft
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1007.png"
-    <<: *proxy_groups
-
-  - name: 酷安
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1013.png"
-    <<: *proxy_groups
-
-  - name: Kakao
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1013.png"
-    <<: *proxy_groups
-
-  - name: Line
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1014.png"
-    <<: *proxy_groups
-
-  - name: Instagram
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1015.png"
-    <<: *proxy_groups
-
-  - name: Threads
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1015.png"
-    <<: *proxy_groups
-
-  - name: Cloudflare
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1019.png"
-    <<: *proxy_groups
-
-  - name: YouTube音乐
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1020.png"
-    <<: *proxy_groups
-
   - name: Telegram
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1008.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Telegram.svg"
     <<: *proxy_groups
-
+  - name: KakaoTalk
+    icon: "https://www.svgrepo.com/show/343566/kakao-talk-communication-interaction-connection-conversation.svg"
+    <<: *proxy_groups
+  - name: Cloudflare
+    icon: "https://www.vectorlogo.zone/logos/cloudflare/cloudflare-ar21.svg"
+    <<: *proxy_groups
   - name: Discord
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1009.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Discord.svg"
     <<: *proxy_groups
-
   - name: Spotify
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1010.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Spotify.svg"
     <<: *proxy_groups
-
   - name: TikTok
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1011.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/TikTok.svg"
     <<: *proxy_groups
-
   - name: YouTube
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1012.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/YouTube.svg"
     <<: *proxy_groups
-
   - name: Netflix
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1013.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Netflix.svg"
     <<: *proxy_groups
-
   - name: Google
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1014.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Google.svg"
     <<: *proxy_groups
-
-  - name: GoogleFCM
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1015.png"
+  - name: Meta
+    icon: "https://www.svgrepo.com/show/424916/meta-logo-facebook.svg"
     <<: *proxy_groups
-
-  - name: Facebook
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1016.png"
-    <<: *proxy_groups
-
   - name: OpenAI
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1017.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/OpenAI.svg"
     <<: *proxy_groups
-
   - name: GitHub
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1018.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/GitHub.svg"
     <<: *proxy_groups
-
+  - name: LINE
+    icon: "https://www.svgrepo.com/show/517523/line.svg"
+    <<: *proxy_groups
   - name: Twitter(X)
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1019.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Twitter.svg"
     <<: *proxy_groups
-
   - name: DNS连接
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1020.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/DNS.svg"
     <<: *proxy_groups
-
   - name: 漏网之鱼
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1021.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/HBASE-copy.svg"
     <<: *proxy_groups
-
   - name: 广告拦截
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1022.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/No-ads-all.svg"
     type: select
     proxies:
       - ⛔️ 禁止·拒绝连接
       - 🌐 DNS_Hijack
       - REJECT-DROP
       - PASS
-
   - name: WebRTC
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1023.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/WebRTC.svg"
     type: select
     proxies:
       - ⛔️ 禁止·拒绝连接
       - 🌐 DNS_Hijack
       - REJECT-DROP
       - PASS
-
   - name: ALL·延迟最低
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1024.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Return.svg"
     type: url-test
     <<: *A
-
   - name: ALL·负载均衡
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1025.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Return.svg"
     type: load-balance
     strategy: round-robin
     <<: *A
-
   - name: ALL·故障转移
-    icon: "https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Doraemon/Doraemon-1026.png"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Return.svg"
     type: fallback
     <<: *A
-
   - name: ALL·日本地区
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/JP.svg"
     filter: "^(?=.*(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan)).*$"
     <<: *All
-
   - name: ALL·中国台湾
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/CN.svg"
     filter: "^(?=.*(台|新北|彰化|TW|Taiwan|taipei)).*$"
     <<: *All
-
   - name: ALL·香港地区
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/HK.svg"
     filter: "^(?=.*(港|HK|hk|Hong Kong|HongKong|hongkong)).*$"
     <<: *All
-
   - name: ALL·美国地区
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/US.svg"
     filter: "^(?=.*(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)).*$"
     <<: *All
-
   - name: ALL·狮城地区
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Singapore.svg"
     filter: "^(?=.*(新加坡|坡|狮城|SG|Singapore)).*$"
     <<: *All
-
+  - name: ALL·韩国地区
+    icon: "https://www.svgrepo.com/show/405608/flag-for-flag-south-korea.svg"
+    filter: "^(?=.*(韩|首尔|KR|Korea|South Korea)).*$"
+    <<: *All
   - name: ALL·其它地区
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Globe.svg"
     filter: "^(?!.*(港|HK|hk|Hong Kong|HongKong|hongkong|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|台|新北|彰化|TW|Taiwan|新加坡|坡|狮城|SG|Singapore|灾|网易|Netease|套餐|重置|剩余|到期|订阅|群|账户|流量|有效期|时间|官网|拒绝|DNS|Ch|网址|售|防失)).*$"
     <<: *All
-
   - name: 特殊地址
     icon: "https://cdn.jsdelivr.net/gh/MoGuangYu/Surfing@rm/Home/icon/User.svg"
     type: select
@@ -421,9 +336,7 @@ proxy-groups:
     proxies:
       - 🌐 本机·本地直连
       - ⛔️ 禁止·拒绝连接
-
 # —————————
-# 规则锚点
 rule-anchor:
   Local: &Local
     {type: file, behavior: classical, format: text}
@@ -433,319 +346,222 @@ rule-anchor:
     {type: http, behavior: ipcidr, format: mrs, interval: 86400}
   Domain: &Domain
     {type: http, behavior: domain, format: mrs, interval: 86400}
-
 # —————————
-# 规则源
-# 部分规则上游为https://github.com/blackmatrix7/ios_rule_script
 # Github Actions 每日自动同步跟随更新
+# 规则提供者: https://github.com/MetaCubeX/meta-rules-dat
 rule-providers:
   自定义规则: # 主要用于广告误杀自定义放行
     <<: *Classical
     path: ./etc/自定义规则.list
     url: "https://raw.githubusercontent.com/loong2004/Clash_Backup/refs/heads/main/自定义规则.list" 
-
   WebRTC_端/域:
     <<: *Classical
     path: ./rules/WebRTC.list
     url: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/rules/WebRTC.list"
-
   CN_IP:
     <<: *IPCIDR
     path: ./rules/CN_IP.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/cn.mrs"
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/cn.mrs"
   CN_域:
     <<: *Domain
     path: ./rules/CN_域.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cn.mrs"
-
   No-ads-all_域:
     <<: *Domain
     path: ./rules/No-ads-all.mrs
     url: "https://anti-ad.net/mihomo.mrs"
-
-  # 秋风
-  domain_Ads_AWAvenue:
-    <<: *Classical
-    path: ./rules/domain_Ads_AWAvenue.list
-    url: "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge-RULE-SET.list"
-  # Cats-Team
-  domain_Ads_CatsTeam:
-    <<: *Domain
-    path: ./rules/domain_Ads_CatsTeam.mrs
-    url: "https://gp.adrules.top/adrules-mihomo.mrs"
-
-  Kakao_域:
-    <<: *Classical
-    path: ./rules/Kakao.list
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/KakaoTalk/KakaoTalk.list"
-
-  Gemini_域:
-    <<: *Classical
-    path: ./rules/Gemini.list
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.list"
-
-  Line_域:
-    <<: *Classical
-    path: ./rules/Line.list
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Line/Line.list"
-
-  Instagram_域:
-    <<: *Classical
-    path: ./rules/Instagram.list
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Instagram/Instagram.list"
-
-  Coolapk_域:
-    <<: *Classical
-    path: ./rules/Coolapk.list
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Coolapk/Coolapk.list"
-
-  Threads_域:
-    <<: *Classical
-    path: ./rules/Threads.list
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Threads/Threads.list"
-
-  Cloudflare_域:
-    <<: *Classical
-    path: ./rules/Cloudflare.list
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Cloudflare/Cloudflare.list"
-
-  YouTubeMusic_域:
-    <<: *Classical
-    path: ./rules/YouTubeMusic.list
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/YouTubeMusic/YouTubeMusic.list"
-
   XiaoHongShu_域:
     <<: *Domain
     path: ./rules/XiaoHongShu.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/XiaoHongShu/XiaoHongShu_OCD_Domain.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/xiaohongshu.mrs"
   DouYin_域:
     <<: *Domain
     path: ./rules/DouYin.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/DouYin/DouYin_OCD_Domain.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/douyin.mrs"
   BiliBili_域:
     <<: *Domain
     path: ./rules/BiliBili.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/BiliBili/BiliBili_OCD_Domain.mrs"
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/bilibili.mrs"
   BiliBili_IP:
     <<: *IPCIDR
     path: ./rules/BiliBili_IP.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/BiliBili/BiliBili_OCD_IP.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/bilibili.mrs"
+  Instagram_域:
+    <<: *Domain
+    path: ./rules/Instagram.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/instagram.mrs"
   Steam_域:
     <<: *Domain
     path: ./rules/Steam.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Steam/Steam_OCD_Domain.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/steam.mrs"
   TikTok_域:
     <<: *Domain
     path: ./rules/TikTok.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/TikTok/TikTok_OCD_Domain.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/tiktok.mrs"
+  PayPal_域:
+    <<: *Domain
+    path: ./rules/PayPal.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/paypal.mrs"
   Spotify_域:
     <<: *Domain
     path: ./rules/Spotify.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Spotify/Spotify_OCD_Domain.mrs"
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/spotify.mrs"
   Spotify_IP:
     <<: *IPCIDR
     path: ./rules/Spotify_IP.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Spotify/Spotify_OCD_IP.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/spotify.mrs"
   Facebook_域:
     <<: *Domain
     path: ./rules/Facebook.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Facebook/Facebook_OCD_Domain.mrs"
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/facebook.mrs"
   Facebook_IP:
     <<: *IPCIDR
     path: ./rules/Facebook_IP.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Facebook/Facebook_OCD_IP.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/facebook.mrs"
+  LINE_域:
+    <<: *Domain
+    path: ./rules/LINE.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/line.mrs"
   Telegram_域:
     <<: *Domain
     path: ./rules/Telegram.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Telegram/Telegram_OCD_Domain.mrs"
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.mrs"
   Telegram_IP:
     <<: *IPCIDR
     path: ./rules/Telegram_IP.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Telegram/Telegram_OCD_IP.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/telegram.mrs"
   YouTube_域:
     <<: *Domain
     path: ./rules/YouTube.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/YouTube/YouTube_OCD_Domain.mrs"
-  YouTube_IP:
-    <<: *IPCIDR
-    path: ./rules/YouTube_IP.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/YouTube/YouTube_OCD_IP.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/youtube.mrs"
   Google_域:
     <<: *Domain
     path: ./rules/Google.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Google/Google_OCD_Domain.mrs"
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.mrs"
   Google_IP:
     <<: *IPCIDR
     path: ./rules/Google_IP.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Google/Google_OCD_IP.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/google.mrs"
+  Gemini_域:
+    <<: *Domain
+    path: ./rules/Gemini.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google-gemini.mrs"
   GoogleFCM_域:
     <<: *Domain
     path: ./rules/GoogleFCM.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/GoogleFCM/GoogleFCM_OCD_Domain.mrs"
-  GoogleFCM_IP:
-    <<: *IPCIDR
-    path: ./rules/GoogleFCM_IP.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/GoogleFCM/GoogleFCM_OCD_IP.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/googlefcm.mrs"
   Microsoft_域:
     <<: *Domain
     path: ./rules/Microsoft.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Microsoft/Microsoft_OCD_Domain.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft.mrs"
+  Kakao_域:
+    <<: *Domain
+    path: ./rules/Kakao.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/kakao.mrs"
   Apple_域:
     <<: *Domain
     path: ./rules/Apple.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Apple/Apple_OCD_Domain.mrs"
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/apple.mrs"
   Apple_IP:
     <<: *IPCIDR
     path: ./rules/Apple_IP.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Apple/Apple_OCD_IP.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/apple.mrs"
   OpenAI_域:
     <<: *Domain
     path: ./rules/OpenAI.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/OpenAI/OpenAI_OCD_Domain.mrs"
-  OpenAI_IP:
-    <<: *IPCIDR
-    path: ./rules/OpenAI_IP.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/OpenAI/OpenAI_OCD_IP.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/openai.mrs"
   Netflix_域:
     <<: *Domain
     path: ./rules/Netflix.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Netflix/Netflix_OCD_Domain.mrs"
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/netflix.mrs"
   Netflix_IP:
     <<: *IPCIDR
     path: ./rules/Netflix_IP.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Netflix/Netflix_OCD_IP.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/netflix.mrs"
   Discord_域:
     <<: *Domain
     path: ./rules/Discord.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Discord/Discord_OCD_Domain.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/discord.mrs"
+  Cloudflare_域:
+    <<: *Domain
+    path: ./rules/Cloudflare.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cloudflare.mrs"
+  Cloudflare_IP:
+    <<: *IPCIDR
+    path: ./rules/Cloudflare_IP.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/cloudflare.mrs"
   GitHub_域:
     <<: *Domain
     path: ./rules/GitHub.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/GitHub/GitHub_OCD_Domain.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/github.mrs"
+  Threads_域:
+    <<: *Domain
+    path: ./rules/Threads.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/threads.mrs"
   Twitter_域:
     <<: *Domain
     path: ./rules/Twitter.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Twitter/Twitter_OCD_Domain.mrs"
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/twitter.mrs"
   Twitter_IP:
     <<: *IPCIDR
     path: ./rules/Twitter_IP.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Twitter/Twitter_OCD_IP.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/twitter.mrs"
   Private_域:
     <<: *Domain
-    path: ./rules/LAN.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Lan/Lan_OCD_Domain.mrs"
+    path: ./rules/Private.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.mrs"
   Private_IP:
     <<: *IPCIDR
     path: ./rules/Private_IP.mrs
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Lan/Lan_OCD_IP.mrs"
-
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/private.mrs"
 # —————————
-# 分流规则
 rules:
   - DST-PORT,53,🌐 DNS_Hijack
   - DST-PORT,853,DNS连接
-
   - RULE-SET,自定义规则,特殊地址
-
   - RULE-SET,WebRTC_端/域,WebRTC
   - RULE-SET,No-ads-all_域,广告拦截
-  - RULE-SET,domain_Ads_AWAvenue,广告拦截
-  - RULE-SET,domain_Ads_CatsTeam,广告拦截
-
-  - RULE-SET,Coolapk_域,酷安
-  - PROCESS-NAME,com.coolapk.market,酷安
-
-  - PROCESS-NAME,jp.naver.line.android,Line
-  - RULE-SET,Line_域,Line
-  - RULE-SET,Cloudflare_域,Cloudflare
-  - PROCESS-NAME,com.instagram.android,Instagram
-  - RULE-SET,Instagram_域,Instagram
-
-  - PROCESS-NAME,com.kakao.talk,Kakao
-  - RULE-SET,Kakao_域,Kakao
-  - RULE-SET,YouTubeMusic_域,YouTube音乐
-  - PROCESS-NAME,com.google.android.apps.youtube.music,YouTube音乐
-
-  - PROCESS-NAME,com.instagram.barcelona,Threads
-  - RULE-SET,Threads_域,Threads
-
-  - PROCESS-NAME,com.ss.android.ugc.aweme,抖音
-  - RULE-SET,DouYin_域,抖音
-
-  - PROCESS-NAME,com.xingin.xhs,小红书
-  - RULE-SET,XiaoHongShu_域,小红书
-
-  - PROCESS-NAME,tv.danmaku.bili,BiliBili
-  - RULE-SET,BiliBili_域,BiliBili
-  - RULE-SET,BiliBili_IP,BiliBili,no-resolve
-
-  - RULE-SET,Steam_域,Steam
-
+  - PROCESS-NAME,com.ss.android.ugc.aweme,🌐 本机·本地直连
+  - RULE-SET,DouYin_域,🌐 本机·本地直连
+  - PROCESS-NAME,com.xingin.xhs,🌐 本机·本地直连
+  - RULE-SET,XiaoHongShu_域,🌐 本机·本地直连
+  - PROCESS-NAME,tv.danmaku.bili,🌐 本机·本地直连
+  - RULE-SET,BiliBili_域,🌐 本机·本地直连
+  - RULE-SET,BiliBili_IP,🌐 本机·本地直连,no-resolve
+  - RULE-SET,Steam_域,🌐 本机·本地直连
   - RULE-SET,GitHub_域,GitHub
-
   - RULE-SET,Discord_域,Discord
-
+  - RULE-SET,Kakao_域,KakaoTalk
+  - RULE-SET,LINE_域,LINE
   - RULE-SET,TikTok_域,TikTok
-
   - RULE-SET,Twitter_域,Twitter(X)
   - RULE-SET,Twitter_IP,Twitter(X),no-resolve
-
   - RULE-SET,YouTube_域,YouTube
-  - RULE-SET,YouTube_IP,YouTube,no-resolve
-
-  - DOMAIN,android.apis.google.com,Google
-  - RULE-SET,GoogleFCM_域,GoogleFCM
-
-  - PROCESS-NAME,com.google.android.apps.bard,Google
-  - PROCESS-NAME,com.google.android.googlequicksearchbox,Google
+  - DOMAIN-KEYWORD,mtalk.google.com,🌐 本机·本地直连
+  - RULE-SET,GoogleFCM_域,🌐 本机·本地直连
   - RULE-SET,Gemini_域,Google
   - RULE-SET,Google_域,Google
   - RULE-SET,Google_IP,Google,no-resolve
-
   - RULE-SET,Netflix_域,Netflix
   - RULE-SET,Netflix_IP,Netflix,no-resolve
-
   - RULE-SET,Spotify_域,Spotify
   - RULE-SET,Spotify_IP,Spotify,no-resolve
-
-  - RULE-SET,Facebook_域,Facebook
-  - RULE-SET,Facebook_IP,Facebook,no-resolve
-
+  - RULE-SET,Threads_域,Meta
+  - RULE-SET,Instagram_域,Meta
+  - RULE-SET,Facebook_域,Meta
+  - RULE-SET,Facebook_IP,Meta,no-resolve
   - RULE-SET,OpenAI_域,OpenAI
-  - RULE-SET,OpenAI_IP,OpenAI,no-resolve
-  - PROCESS-NAME,com.openai.chatgpt,OpenAI
-
-  - RULE-SET,Apple_域,Apple
-  - RULE-SET,Apple_IP,Apple,no-resolve
-
-  - RULE-SET,Microsoft_域,Microsoft
-
+  - RULE-SET,PayPal_域,总模式
+  - RULE-SET,Cloudflare_域,Cloudflare
+  - RULE-SET,Cloudflare_IP,Cloudflare,no-resolve
+  - RULE-SET,Apple_域,🌐 本机·本地直连
+  - RULE-SET,Apple_IP,🌐 本机·本地直连,no-resolve
+  - RULE-SET,Microsoft_域,🌐 本机·本地直连
   - RULE-SET,Telegram_域,Telegram
   - RULE-SET,Telegram_IP,Telegram,no-resolve
-
   - RULE-SET,Private_域,🌐 本机·本地直连
   - RULE-SET,Private_IP,🌐 本机·本地直连,no-resolve
-
   - RULE-SET,CN_域,🌐 本机·本地直连
   - RULE-SET,CN_IP,🌐 本机·本地直连
-
   - MATCH,漏网之鱼
 # —————————

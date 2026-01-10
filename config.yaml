@@ -120,7 +120,7 @@ tun:
   auto-detect-interface: true
   # 如使用黑白名单这里需排除
   # exclude-package 排除 / include-package 包含
-  include-package:
+  exclude-package:
 #    - com.samsung.android.messaging # 三星专供 ↓ 范围
 #    - com.samsung.android.app.telephonyui
 #    - com.samsung.android.dialer
@@ -405,6 +405,10 @@ rule-providers:
     <<: *IPCIDR
     path: ./rules/Spotify_IP.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/spotify.mrs"
+  PayPal_域:
+    <<: *Domain
+    path: ./rules/PayPal.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/paypal.mrs"
   Facebook_域:
     <<: *Domain
     path: ./rules/Facebook.mrs
@@ -546,6 +550,7 @@ rules:
   - RULE-SET,Facebook_域,Meta
   - RULE-SET,Facebook_IP,Meta,no-resolve
   - RULE-SET,OpenAI_域,OpenAI
+  - RULE-SET,PayPal_域,总模式
   - RULE-SET,Cloudflare_域,Cloudflare
   - RULE-SET,Cloudflare_IP,Cloudflare,no-resolve
   - RULE-SET,Apple_域,🌐 本机·本地直连
