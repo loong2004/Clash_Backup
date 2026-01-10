@@ -151,6 +151,10 @@ dns:
     - "RULE-SET:CN_域"
     - "RULE-SET:Private_域"
     - "RULE-SET:GoogleFCM_域"
+    - "+.miui.com"
+    - "+.xiaomi.com"
+    - "+.update.miui.com"
+    - "+.p.pcdn.xiaomi.com"
     - "+.3gppnetwork.org"
     - "+.xtracloud.net"
     - "+.nflxvideo.net"     # Netflix 视频流防检测
