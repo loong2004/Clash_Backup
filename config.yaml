@@ -515,6 +515,7 @@ rule-providers:
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/private.mrs"
 # —————————
 rules:
+  - AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT
   - DST-PORT,53,🌐 DNS_Hijack
   - DST-PORT,853,DNS连接
   - RULE-SET,自定义规则,特殊地址
