@@ -278,6 +278,10 @@ proxy-groups:
     <<: *proxy_groups
   - name: LINE
     icon: "https://www.svgrepo.com/show/517523/line.svg"
+    <<: *proxy_groups
+  - name: PayPal
+    icon: "https://www.svgrepo.com/show/452082/paypal.svg"
+    <<: *proxy_groups
 
 
 
@@ -532,7 +536,10 @@ rule-providers:
     <<: *Domain
     path: ./rules/XAI.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/xai.mrs"
-
+  PayPal_域:
+    <<: *Domain
+    path: ./rules/PayPal.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/paypal.mrs"
 
 
 
@@ -580,6 +587,7 @@ rules:
   - RULE-SET,GitHub_域,GitHub
   - RULE-SET,Discord_域,Discord
   - RULE-SET,Kakao_域,KakaoTalk
+  - RULE-SET,PayPal_域,PayPal
   - RULE-SET,LINE_域,LINE  
   - RULE-SET,TikTok_域,TikTok
   - RULE-SET,XAI_域,AI
