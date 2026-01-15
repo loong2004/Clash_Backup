@@ -260,7 +260,7 @@ proxy-groups:
   - name: GoogleFCM
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/GoogleFCM.svg"
     <<: *proxy_groups
-  - name: OpenAI
+  - name: AI
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/OpenAI.svg"
     <<: *proxy_groups
   - name: GitHub
@@ -524,6 +524,10 @@ rule-providers:
     <<: *Domain
     path: ./rules/LINE.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/line.mrs"
+  Gemini_域:
+    <<: *Domain
+    path: ./rules/Gemini.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google-gemini.mrs"
 
 
 
@@ -578,6 +582,8 @@ rules:
   - RULE-SET,Twitter_IP,Twitter(X),no-resolve
   - RULE-SET,YouTube_域,YouTube
   - RULE-SET,GoogleFCM_域,GoogleFCM
+  - RULE-SET,OpenAI_域,AI
+  - RULE-SET,Gemini_域,AI
   - RULE-SET,Google_域,Google
   - RULE-SET,Google_IP,Google,no-resolve
   - RULE-SET,Netflix_域,Netflix
@@ -587,7 +593,6 @@ rules:
   - RULE-SET,Instagram_域,Meta
   - RULE-SET,Facebook_域,Meta
   - RULE-SET,Facebook_IP,Meta,no-resolve
-  - RULE-SET,OpenAI_域,OpenAI
   - RULE-SET,Apple_域,Apple
   - RULE-SET,Apple_IP,Apple,no-resolve
   - RULE-SET,Microsoft_域,Microsoft
