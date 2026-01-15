@@ -276,7 +276,8 @@ proxy-groups:
   - name: KakaoTalk
     icon: "https://www.svgrepo.com/show/343566/kakao-talk-communication-interaction-connection-conversation.svg"
     <<: *proxy_groups
-
+  - name: LINE
+    icon: "https://www.svgrepo.com/show/517523/line.svg"
 
 
 
@@ -519,6 +520,10 @@ rule-providers:
     <<: *Domain
     path: ./rules/Kakao.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/kakao.mrs"
+  LINE_域:
+    <<: *Domain
+    path: ./rules/LINE.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/line.mrs"
 
 
 
@@ -567,6 +572,7 @@ rules:
   - RULE-SET,GitHub_域,GitHub
   - RULE-SET,Discord_域,Discord
   - RULE-SET,Kakao_域,KakaoTalk
+  - RULE-SET,LINE_域,LINE  
   - RULE-SET,TikTok_域,TikTok
   - RULE-SET,Twitter_域,Twitter(X)
   - RULE-SET,Twitter_IP,Twitter(X),no-resolve
