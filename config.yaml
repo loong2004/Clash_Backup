@@ -528,6 +528,10 @@ rule-providers:
     <<: *Domain
     path: ./rules/Gemini.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google-gemini.mrs"
+  XAI_域:
+    <<: *Domain
+    path: ./rules/XAI.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/xai.mrs"
 
 
 
@@ -578,6 +582,7 @@ rules:
   - RULE-SET,Kakao_域,KakaoTalk
   - RULE-SET,LINE_域,LINE  
   - RULE-SET,TikTok_域,TikTok
+  - RULE-SET,XAI_域,AI
   - RULE-SET,Twitter_域,Twitter(X)
   - RULE-SET,Twitter_IP,Twitter(X),no-resolve
   - RULE-SET,YouTube_域,YouTube
