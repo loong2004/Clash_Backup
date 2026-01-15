@@ -279,6 +279,24 @@ proxy-groups:
   - name: Meta
     icon: "https://www.svgrepo.com/show/424916/meta-logo-facebook.svg"
     <<: *proxy_groups
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   - name: DNS连接
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/DNS.svg"
     <<: *proxy_groups
@@ -496,6 +514,40 @@ rule-providers:
     <<: *Domain
     path: ./rules/Threads.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/threads.mrs"
+  Instagram_域:
+    <<: *Domain
+    path: ./rules/Instagram.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/instagram.mrs"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # —————————
 rules:
   - DST-PORT,53,🌐 DNS_Hijack
@@ -524,6 +576,7 @@ rules:
   - RULE-SET,Netflix_IP,Netflix,no-resolve
   - RULE-SET,Spotify_域,Spotify
   - RULE-SET,Threads_域,Meta
+  - RULE-SET,Instagram_域,Meta
   - RULE-SET,Facebook_域,Meta
   - RULE-SET,Facebook_IP,Meta,no-resolve
   - RULE-SET,OpenAI_域,OpenAI
