@@ -224,14 +224,8 @@ proxy-groups:
     proxies:
       - 🌐 本机·本地直连
       - 总模式
-  - name: 小红书
+  - name: 抖红哔
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/XiaoHongShu.svg"
-    <<: *proxy_groups
-  - name: 抖音
-    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/DouYin.svg"
-    <<: *proxy_groups
-  - name: BiliBili
-    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/BiliBili.svg"
     <<: *proxy_groups
   - name: Steam
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/Steam.svg"
@@ -555,13 +549,13 @@ rules:
   - RULE-SET,自定义规则,特殊地址
   - RULE-SET,WebRTC_端/域,WebRTC
   - RULE-SET,No-ads-all_域,广告拦截
-  - PROCESS-NAME,com.ss.android.ugc.aweme,抖音
-  - RULE-SET,DouYin_域,抖音
-  - PROCESS-NAME,com.xingin.xhs,小红书
-  - RULE-SET,XiaoHongShu_域,小红书
-  - PROCESS-NAME,tv.danmaku.bili,BiliBili
-  - RULE-SET,BiliBili_域,BiliBili
-  - RULE-SET,BiliBili_IP,BiliBili,no-resolve
+  - PROCESS-NAME,com.ss.android.ugc.aweme,抖红哔
+  - RULE-SET,DouYin_域,抖红哔
+  - PROCESS-NAME,com.xingin.xhs,抖红哔
+  - RULE-SET,XiaoHongShu_域,抖红哔
+  - PROCESS-NAME,tv.danmaku.bili,抖红哔
+  - RULE-SET,BiliBili_域,抖红哔
+  - RULE-SET,BiliBili_IP,抖红哔,no-resolve
   - RULE-SET,Steam_域,Steam
   - RULE-SET,GitHub_域,GitHub
   - RULE-SET,Discord_域,Discord
