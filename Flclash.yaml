@@ -10,6 +10,7 @@ disable-keep-alive: true
 geodata-mode: false
 geo-auto-update: true
 geo-update-interval: 24
+updatetime: &Time 86400
 geox-url:
   asn: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
 experimental:
@@ -35,7 +36,7 @@ secret: "" # 面板访问密码，如在公网访问建议设置
 # 健康检查
 p: &p
   type: http
-  interval: 86400
+  interval: *Time
   health-check:
     enable: true
     url: https://www.gstatic.com/generate_204
@@ -68,19 +69,19 @@ proxy-providers: # ← 此函数位置请勿变动！此为模块更新时备份
     override:
       additional-prefix: "Main："
     path: ./proxies/1.主要地址.yaml
-    url: "此处引入您的Clash订阅链接地址"
+    url: ""
   2.备用地址:
     <<: *p
     override:
       additional-prefix: "Minor："
     path: ./proxies/2.备用地址.yaml
-    url: "此处引入您的Clash订阅链接地址"
+    url: ""
   3.额外地址:
     <<: *p
     override:
       additional-prefix: "Additi："
     path: ./proxies/3.额外地址.yaml
-    url: "此处引入您的Clash订阅链接地址"
+    url: ""
 # —————————
 # 节点记忆
 profile: # ← 此函数位置请勿变动！此为模块更新时备份恢复订阅变量范围 ↑
@@ -121,16 +122,16 @@ tun:
   # 如使用黑白名单这里需排除
   # exclude-package 排除 / include-package 包含
   exclude-package:
-#    - com.samsung.android.messaging # 三星专供 ↓ 范围
-#    - com.samsung.android.app.telephonyui
-#    - com.samsung.android.dialer
-#    - com.samsung.android.incallui
-#    - com.samsung.android.smartcallprovider
-#    - com.samsung.android.intellivoiceservice
-#    - com.android.settings
-#    - com.qti.qcc
-#    - com.sec.epdg
-#    - com.sec.imsservice # 三星专供 ↑ 范围
+    - com.samsung.android.messaging # 三星专供 ↓ 范围
+    - com.samsung.android.app.telephonyui
+    - com.samsung.android.dialer
+    - com.samsung.android.incallui
+    - com.samsung.android.smartcallprovider
+    - com.samsung.android.intellivoiceservice
+    - com.android.settings
+    - com.qti.qcc
+    - com.sec.epdg
+    - com.sec.imsservice # 三星专供 ↑ 范围
     # 非三星用户不必理会，三星用户需自行取消注释 不可使用include-package
 # —————————
 # DNS模块
@@ -174,10 +175,10 @@ dns:
     # ----------------
     # 你的本地
     # 各大路由器/光猫默认 DNS
-    # - 192.168.1.1    # 请确保当前局域网可通
+    #- 192.168.1.1    # 请确保当前局域网可通
     # SIM卡运营商 [下方替换成你的运营商 一般有鉴权]
-    # - 120.80.80.80  # ← 替换成你想用的 或者删除
-    # - 221.5.88.88   # ← 替换成你想用的 或者删除
+    #- 120.80.80.80  # ← 替换成你想用的 或者删除
+    #- 221.5.88.88   # ← 替换成你想用的 或者删除
 # —————————
 proxies:
   - {name: 🌐 本机·本地直连, type: direct, udp: true}
@@ -223,14 +224,20 @@ proxy-groups:
     proxies:
       - 🌐 本机·本地直连
       - 总模式
+  - name: 抖红哔
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/XiaoHongShu.svg"
+    <<: *proxy_groups
+  - name: Steam
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/Steam.svg"
+    <<: *proxy_groups
+  - name: Apple
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/Apple.svg"
+    <<: *proxy_groups
+  - name: Microsoft
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/Microsoft.svg"
+    <<: *proxy_groups
   - name: Telegram
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/Telegram.svg"
-    <<: *proxy_groups
-  - name: KakaoTalk
-    icon: "https://www.svgrepo.com/show/343566/kakao-talk-communication-interaction-connection-conversation.svg"
-    <<: *proxy_groups
-  - name: Cloudflare
-    icon: "https://www.vectorlogo.zone/logos/cloudflare/cloudflare-ar21.svg"
     <<: *proxy_groups
   - name: Discord
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/Discord.svg"
@@ -250,21 +257,48 @@ proxy-groups:
   - name: Google
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/Google.svg"
     <<: *proxy_groups
-  - name: Meta
-    icon: "https://www.svgrepo.com/show/424916/meta-logo-facebook.svg"
+  - name: GoogleFCM
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/GoogleFCM.svg"
     <<: *proxy_groups
-  - name: OpenAI
+  - name: AI
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/OpenAI.svg"
     <<: *proxy_groups
   - name: GitHub
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/GitHub.svg"
     <<: *proxy_groups
-  - name: LINE
-    icon: "https://www.svgrepo.com/show/517523/line.svg"
-    <<: *proxy_groups
   - name: Twitter(X)
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/Twitter.svg"
     <<: *proxy_groups
+#####Monki自定义
+  - name: Meta
+    icon: "https://www.svgrepo.com/show/424916/meta-logo-facebook.svg"
+    <<: *proxy_groups
+  - name: KakaoTalk
+    icon: "https://www.svgrepo.com/show/343566/kakao-talk-communication-interaction-connection-conversation.svg"
+    <<: *proxy_groups
+  - name: LINE
+    icon: "https://www.svgrepo.com/show/517523/line.svg"
+    <<: *proxy_groups
+  - name: PayPal
+    icon: "https://www.svgrepo.com/show/452082/paypal.svg"
+    <<: *proxy_groups
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   - name: DNS连接
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/DNS.svg"
     <<: *proxy_groups
@@ -329,10 +363,10 @@ proxy-groups:
     filter: "^(?!.*(港|HK|hk|Hong Kong|HongKong|hongkong|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|台|新北|彰化|TW|Taiwan|新加坡|坡|狮城|SG|Singapore|灾|网易|Netease|套餐|重置|剩余|到期|订阅|群|账户|流量|有效期|时间|官网|拒绝|DNS|Ch|网址|售|防失)).*$"
     <<: *All
   - name: 特殊地址
-    icon: "https://cdn.jsdelivr.net/gh/MoGuangYu/Surfing@main/app/icon/User.svg"
+    icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/User.svg"
     type: select
     url: https://www.baidu.com/favicon.ico
-    interval: 86400
+    interval: *Time
     proxies:
       - 🌐 本机·本地直连
       - ⛔️ 禁止·拒绝连接
@@ -341,11 +375,11 @@ rule-anchor:
   Local: &Local
     {type: file, behavior: classical, format: text}
   Classical: &Classical
-    {type: http, behavior: classical, format: text, interval: 86400}
+    {type: http, behavior: classical, format: text, interval: *Time}
   IPCIDR: &IPCIDR
-    {type: http, behavior: ipcidr, format: mrs, interval: 86400}
+    {type: http, behavior: ipcidr, format: mrs, interval: *Time}
   Domain: &Domain
-    {type: http, behavior: domain, format: mrs, interval: 86400}
+    {type: http, behavior: domain, format: mrs, interval: *Time}
 # —————————
 # Github Actions 每日自动同步跟随更新
 # 规则提供者: https://github.com/MetaCubeX/meta-rules-dat
@@ -357,7 +391,7 @@ rule-providers:
   WebRTC_端/域:
     <<: *Classical
     path: ./rules/WebRTC.list
-    url: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/rules/WebRTC.list"
+    url: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/box_bll/clash/rules/WebRTC.list"
   CN_IP:
     <<: *IPCIDR
     path: ./rules/CN_IP.mrs
@@ -386,10 +420,6 @@ rule-providers:
     <<: *IPCIDR
     path: ./rules/BiliBili_IP.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/bilibili.mrs"
-  Instagram_域:
-    <<: *Domain
-    path: ./rules/Instagram.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/instagram.mrs"
   Steam_域:
     <<: *Domain
     path: ./rules/Steam.mrs
@@ -398,18 +428,10 @@ rule-providers:
     <<: *Domain
     path: ./rules/TikTok.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/tiktok.mrs"
-  PayPal_域:
-    <<: *Domain
-    path: ./rules/PayPal.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/paypal.mrs"
   Spotify_域:
     <<: *Domain
     path: ./rules/Spotify.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/spotify.mrs"
-  Spotify_IP:
-    <<: *IPCIDR
-    path: ./rules/Spotify_IP.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/spotify.mrs"
   Facebook_域:
     <<: *Domain
     path: ./rules/Facebook.mrs
@@ -418,10 +440,6 @@ rule-providers:
     <<: *IPCIDR
     path: ./rules/Facebook_IP.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/facebook.mrs"
-  LINE_域:
-    <<: *Domain
-    path: ./rules/LINE.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/line.mrs"
   Telegram_域:
     <<: *Domain
     path: ./rules/Telegram.mrs
@@ -442,10 +460,6 @@ rule-providers:
     <<: *IPCIDR
     path: ./rules/Google_IP.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/google.mrs"
-  Gemini_域:
-    <<: *Domain
-    path: ./rules/Gemini.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google-gemini.mrs"
   GoogleFCM_域:
     <<: *Domain
     path: ./rules/GoogleFCM.mrs
@@ -454,10 +468,6 @@ rule-providers:
     <<: *Domain
     path: ./rules/Microsoft.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft.mrs"
-  Kakao_域:
-    <<: *Domain
-    path: ./rules/Kakao.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/kakao.mrs"
   Apple_域:
     <<: *Domain
     path: ./rules/Apple.mrs
@@ -482,22 +492,10 @@ rule-providers:
     <<: *Domain
     path: ./rules/Discord.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/discord.mrs"
-  Cloudflare_域:
-    <<: *Domain
-    path: ./rules/Cloudflare.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cloudflare.mrs"
-  Cloudflare_IP:
-    <<: *IPCIDR
-    path: ./rules/Cloudflare_IP.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/cloudflare.mrs"
   GitHub_域:
     <<: *Domain
     path: ./rules/GitHub.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/github.mrs"
-  Threads_域:
-    <<: *Domain
-    path: ./rules/Threads.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/threads.mrs"
   Twitter_域:
     <<: *Domain
     path: ./rules/Twitter.mrs
@@ -514,6 +512,64 @@ rule-providers:
     <<: *IPCIDR
     path: ./rules/Private_IP.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/private.mrs"
+###### Monki自定义添加
+  Threads_域:
+    <<: *Domain
+    path: ./rules/Threads.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/threads.mrs"
+  Instagram_域:
+    <<: *Domain
+    path: ./rules/Instagram.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/instagram.mrs"
+  Kakao_域:
+    <<: *Domain
+    path: ./rules/Kakao.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/kakao.mrs"
+  LINE_域:
+    <<: *Domain
+    path: ./rules/LINE.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/line.mrs"
+  Gemini_域:
+    <<: *Domain
+    path: ./rules/Gemini.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google-gemini.mrs"
+  XAI_域:
+    <<: *Domain
+    path: ./rules/XAI.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/xai.mrs"
+  PayPal_域:
+    <<: *Domain
+    path: ./rules/PayPal.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/paypal.mrs"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # —————————
 rules:
   - DST-PORT,53,🌐 DNS_Hijack
@@ -521,42 +577,39 @@ rules:
   - RULE-SET,自定义规则,特殊地址
   - RULE-SET,WebRTC_端/域,WebRTC
   - RULE-SET,No-ads-all_域,广告拦截
-  - PROCESS-NAME,com.ss.android.ugc.aweme,🌐 本机·本地直连
-  - RULE-SET,DouYin_域,🌐 本机·本地直连
-  - PROCESS-NAME,com.xingin.xhs,🌐 本机·本地直连
-  - RULE-SET,XiaoHongShu_域,🌐 本机·本地直连
-  - PROCESS-NAME,tv.danmaku.bili,🌐 本机·本地直连
-  - RULE-SET,BiliBili_域,🌐 本机·本地直连
-  - RULE-SET,BiliBili_IP,🌐 本机·本地直连,no-resolve
-  - RULE-SET,Steam_域,🌐 本机·本地直连
+  - PROCESS-NAME,com.ss.android.ugc.aweme,抖红哔
+  - RULE-SET,DouYin_域,抖红哔
+  - PROCESS-NAME,com.xingin.xhs,抖红哔
+  - RULE-SET,XiaoHongShu_域,抖红哔
+  - PROCESS-NAME,tv.danmaku.bili,抖红哔
+  - RULE-SET,BiliBili_域,抖红哔
+  - RULE-SET,BiliBili_IP,抖红哔,no-resolve
+  - RULE-SET,Steam_域,Steam
   - RULE-SET,GitHub_域,GitHub
   - RULE-SET,Discord_域,Discord
   - RULE-SET,Kakao_域,KakaoTalk
-  - RULE-SET,LINE_域,LINE
+  - RULE-SET,PayPal_域,PayPal
+  - RULE-SET,LINE_域,LINE  
   - RULE-SET,TikTok_域,TikTok
+  - RULE-SET,XAI_域,AI
   - RULE-SET,Twitter_域,Twitter(X)
   - RULE-SET,Twitter_IP,Twitter(X),no-resolve
   - RULE-SET,YouTube_域,YouTube
-  - DOMAIN-KEYWORD,mtalk.google.com,🌐 本机·本地直连
-  - RULE-SET,GoogleFCM_域,🌐 本机·本地直连
-  - RULE-SET,Gemini_域,Google
+  - RULE-SET,GoogleFCM_域,GoogleFCM
+  - RULE-SET,OpenAI_域,AI
+  - RULE-SET,Gemini_域,AI
   - RULE-SET,Google_域,Google
   - RULE-SET,Google_IP,Google,no-resolve
   - RULE-SET,Netflix_域,Netflix
   - RULE-SET,Netflix_IP,Netflix,no-resolve
   - RULE-SET,Spotify_域,Spotify
-  - RULE-SET,Spotify_IP,Spotify,no-resolve
   - RULE-SET,Threads_域,Meta
   - RULE-SET,Instagram_域,Meta
   - RULE-SET,Facebook_域,Meta
   - RULE-SET,Facebook_IP,Meta,no-resolve
-  - RULE-SET,OpenAI_域,OpenAI
-  - RULE-SET,PayPal_域,🌐 本机·本地直连
-  - RULE-SET,Cloudflare_域,Cloudflare
-  - RULE-SET,Cloudflare_IP,Cloudflare,no-resolve
-  - RULE-SET,Apple_域,🌐 本机·本地直连
-  - RULE-SET,Apple_IP,🌐 本机·本地直连,no-resolve
-  - RULE-SET,Microsoft_域,🌐 本机·本地直连
+  - RULE-SET,Apple_域,Apple
+  - RULE-SET,Apple_IP,Apple,no-resolve
+  - RULE-SET,Microsoft_域,Microsoft
   - RULE-SET,Telegram_域,Telegram
   - RULE-SET,Telegram_IP,Telegram,no-resolve
   - RULE-SET,Private_域,🌐 本机·本地直连
