@@ -69,19 +69,19 @@ proxy-providers: # ← 此函数位置请勿变动！此为模块更新时备份
     override:
       additional-prefix: "Main："
     path: ./proxies/1.主要地址.yaml
-    url: ""
+    url: "此处引入您的Clash订阅链接地址"
   2.备用地址:
     <<: *p
     override:
       additional-prefix: "Minor："
     path: ./proxies/2.备用地址.yaml
-    url: ""
+    url: "此处引入您的Clash订阅链接地址"
   3.额外地址:
     <<: *p
     override:
       additional-prefix: "Additi："
     path: ./proxies/3.额外地址.yaml
-    url: ""
+    url: "此处引入您的Clash订阅链接地址"
 # —————————
 # 节点记忆
 profile: # ← 此函数位置请勿变动！此为模块更新时备份恢复订阅变量范围 ↑
@@ -149,6 +149,7 @@ dns:
     - "RULE-SET:GoogleFCM_域"
     - "+.3gppnetwork.org"
     - "+.xtracloud.net"
+    - "RULE-SET:自定义规则"
   proxy-server-nameserver:
     - https://1.12.12.12:443/dns-query#🌐 本机·本地直连&h3=false
     - https://120.53.53.53:443/dns-query#🌐 本机·本地直连&h3=false
