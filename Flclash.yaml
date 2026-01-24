@@ -10,7 +10,7 @@ disable-keep-alive: true
 geodata-mode: false
 geo-auto-update: true
 geo-update-interval: 24
-updatetime: &Time 14400
+updatetime: &Time 43200
 geox-url:
   asn: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
 experimental:
@@ -597,6 +597,8 @@ rules:
   - RULE-SET,Twitter_IP,Twitter(X),no-resolve
   - RULE-SET,YouTube_域,YouTube
   - RULE-SET,GoogleFCM_域,GoogleFCM
+  - PROCESS-NAME,com.google.android.apps.bard,AI
+  - PROCESS-NAME,com.openai.chatgpt,AI
   - RULE-SET,OpenAI_域,AI
   - RULE-SET,Gemini_域,AI
   - RULE-SET,Google_域,Google
