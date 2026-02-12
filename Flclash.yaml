@@ -283,7 +283,9 @@ proxy-groups:
   - name: PayPal
     icon: "https://www.svgrepo.com/show/452082/paypal.svg"
     <<: *proxy_groups
-
+  - name: Cloudflare
+    icon: "https://www.svgrepo.com/show/353564/cloudflare.svg"
+    <<: *proxy_groups
 
 
 
@@ -542,6 +544,14 @@ rule-providers:
     <<: *Domain
     path: ./rules/PayPal.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/paypal.mrs"
+  Claude_域:
+    <<: *Domain
+    path: ./rules/Claude.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/claude.mrs"
+  Cloudflare_域:
+    <<: *Domain
+    path: ./rules/Cloudflare.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cloudflare.mrs"
 
 
 
@@ -589,6 +599,7 @@ rules:
   - RULE-SET,GitHub_域,GitHub
   - RULE-SET,Discord_域,Discord
   - RULE-SET,Kakao_域,KakaoTalk
+  - RULE-SET,Cloudflare_域,Cloudflare 
   - RULE-SET,PayPal_域,PayPal
   - RULE-SET,LINE_域,LINE  
   - RULE-SET,TikTok_域,TikTok
@@ -601,6 +612,7 @@ rules:
   - PROCESS-NAME,com.openai.chatgpt,AI
   - RULE-SET,OpenAI_域,AI
   - RULE-SET,Gemini_域,AI
+  - RULE-SET,Claude_域,AI
   - RULE-SET,Google_域,Google
   - RULE-SET,Google_IP,Google,no-resolve
   - RULE-SET,Netflix_域,Netflix
