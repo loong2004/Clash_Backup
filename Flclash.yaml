@@ -284,7 +284,7 @@ proxy-groups:
     icon: "https://www.svgrepo.com/show/452082/paypal.svg"
     <<: *proxy_groups
   - name: Cloudflare
-    icon: "https://www.svgrepo.com/show/353564/cloudflare.svg"
+    icon: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Cloudflare_Logo.svg"
     <<: *proxy_groups
 
 
