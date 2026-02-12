@@ -283,7 +283,9 @@ proxy-groups:
   - name: PayPal
     icon: "https://www.svgrepo.com/show/452082/paypal.svg"
     <<: *proxy_groups
-
+  - name: Cloudflare
+    icon: "https://www.svgrepo.com/show/353564/cloudflare.svg"
+    <<: *proxy_groups
 
 
 
@@ -545,6 +547,10 @@ rule-providers:
     <<: *Domain
     path: ./rules/Claude.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/claude.mrs"
+  Cloudflare_域:
+    <<: *Domain
+    path: ./rules/Cloudflare.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cloudflare.mrs"
 
 
 
@@ -592,6 +598,7 @@ rules:
   - RULE-SET,GitHub_域,GitHub
   - RULE-SET,Discord_域,Discord
   - RULE-SET,Kakao_域,KakaoTalk
+  - RULE-SET,Cloudflare_域,Cloudflare 
   - RULE-SET,PayPal_域,PayPal
   - RULE-SET,LINE_域,LINE  
   - RULE-SET,TikTok_域,TikTok
