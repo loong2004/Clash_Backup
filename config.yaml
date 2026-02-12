@@ -541,6 +541,10 @@ rule-providers:
     <<: *Domain
     path: ./rules/PayPal.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/paypal.mrs"
+  Claude_域:
+    <<: *Domain
+    path: ./rules/Claude.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/claude.mrs"
 
 
 
@@ -600,6 +604,7 @@ rules:
   - PROCESS-NAME,com.openai.chatgpt,AI
   - RULE-SET,OpenAI_域,AI
   - RULE-SET,Gemini_域,AI
+  - RULE-SET,Claude_域,AI
   - RULE-SET,Google_域,Google
   - RULE-SET,Google_IP,Google,no-resolve
   - RULE-SET,Netflix_域,Netflix
