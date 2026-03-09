@@ -21,6 +21,7 @@ DOMAIN-KEYWORD,hitokoto
 DOMAIN-SUFFIX,wttr.in
 # GitHub 贡献图表
 DOMAIN-SUFFIX,rshah.org
+DOMAIN,c1.rrcdnbf5.com
 
 # ==============================================
 # 3. 前端静态资源 CDN (加速 JS/CSS/字体加载)
