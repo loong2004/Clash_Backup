@@ -14,6 +14,9 @@ IP-CIDR6,fc00::/7
 # ==============================================
 # 随机二次元背景 API 
 DOMAIN-SUFFIX,paugram.com
+DOMAIN-SUFFIX,jwnzn.com
+DOMAIN-SUFFIX,wx.jwnzn.com
+DOMAIN,wx.jwnzn.com
 # 一言 (Hitokoto) 问候语 
 DOMAIN-SUFFIX,hitokoto.cn
 DOMAIN-KEYWORD,hitokoto
