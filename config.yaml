@@ -143,7 +143,8 @@ dns:
   ipv6: false
   listen: 0.0.0.0:1053
   enhanced-mode: fake-ip # redir-host
-  fake-ip-range: 198.18.0.1/16
+  fake-ip-range: 198.18.0.0/16
+  fake-ip-range6: fdfe:dcba:9876::/48
   fake-ip-filter:
     - "RULE-SET:CN_域"
     - "RULE-SET:Private_域"
@@ -168,17 +169,9 @@ dns:
     - https://1.1.1.1:443/dns-query#DNS连接&h3=true
     - https://1.0.0.1:443/dns-query#DNS连接&h3=true
   direct-nameserver:
-    # 腾讯/阿里兜底
-    # 正确配置本地后可移除 否则会卡[可选]
     - 1.12.12.12
     - 223.6.6.6
-    # ----------------
-    # 你的本地
-    # 各大路由器/光猫默认 DNS
-    - 192.168.1.1    # 请确保当前局域网可通
-    # SIM卡运营商 [下方替换成你的运营商 一般有鉴权]
-    - 120.80.80.80  # ← 替换成你想用的 或者删除
-    - 221.5.88.88   # ← 替换成你想用的 或者删除
+  
 # —————————
 proxies:
   - {name: 🌐 本机·本地直连, type: direct, udp: true}

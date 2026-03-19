@@ -22,9 +22,9 @@ experimental:
         value: "en-US,en;q=0.9"
 unified-delay: true
 tcp-concurrent: true
-log-level: silent
+log-level: silent # debug / silent
 find-process-mode: always
-global-client-fingerprint: chrome
+#global-client-fingerprint: chrome 未来官方可能将移除，意义不大
 external-controller: 0.0.0.0:9090 #修改端口后，如使用磁贴请重新正确设置API端口
 external-ui-url: "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip"
 external-ui: "./webroot/Zash/"
@@ -32,6 +32,7 @@ secret: "" # 面板访问密码，如在公网访问建议设置
 # —————————
 # ==== Tips
 # 1. 修改配置文件保存时，建议重启服务/重载配置.
+# 2. 如使用 SurfingTile 的配置覆写，当前配置文件的某些字段应保持原有的完整性结构
 # —————————
 # 健康检查
 p: &p
@@ -44,8 +45,8 @@ p: &p
   proxy: 订阅更新
   header: # 如遇订阅加载不出来请切换ua
       User-Agent:  # 使用注释法由上到下 默认使用第一个
-        - "clash-verge/v2.2.3"
         - "ClashMetaForAndroid/2.11.2.Meta"
+        - "clash-verge/v2.2.3"
         - "ClashforWindows/0.19.23"
         - "clash.meta"
         - "mihomo"
@@ -107,6 +108,7 @@ sniffer:
     - "Mijia Cloud"
 # —————————
 # 网卡模块
+# 如需使用 建议先阅读文档：https://wiki.metacubex.one/config/inbound/tun/
 tun:
   enable: true
   device: Meta
@@ -141,14 +143,12 @@ dns:
   ipv6: false
   listen: 0.0.0.0:1053
   enhanced-mode: fake-ip # redir-host
-#  fake-ip-filter-mode: whitelist # blacklist/whitelist
-  fake-ip-range: 172.20.0.1/16
+  fake-ip-range: 198.18.0.0/16
+  fake-ip-range6: fdfe:dcba:9876::/48
   fake-ip-filter:
     - "RULE-SET:CN_域"
     - "RULE-SET:Private_域"
     - "RULE-SET:GoogleFCM_域"
-    - "+.3gppnetwork.org"
-    - "+.xtracloud.net"
     - "RULE-SET:自定义规则"
   proxy-server-nameserver:
     - https://1.12.12.12:443/dns-query#🌐 本机·本地直连&h3=false
@@ -169,17 +169,9 @@ dns:
     - https://1.1.1.1:443/dns-query#DNS连接&h3=true
     - https://1.0.0.1:443/dns-query#DNS连接&h3=true
   direct-nameserver:
-    # 腾讯/阿里兜底
-    # 正确配置本地后可移除 否则会卡[可选]
     - 1.12.12.12
     - 223.6.6.6
-    # ----------------
-    # 你的本地
-    # 各大路由器/光猫默认 DNS
-    #- 192.168.1.1    # 请确保当前局域网可通
-    # SIM卡运营商 [下方替换成你的运营商 一般有鉴权]
-    #- 120.80.80.80  # ← 替换成你想用的 或者删除
-    #- 221.5.88.88   # ← 替换成你想用的 或者删除
+  
 # —————————
 proxies:
   - {name: 🌐 本机·本地直连, type: direct, udp: true}
@@ -545,9 +537,9 @@ rule-providers:
     path: ./rules/PayPal.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/paypal.mrs"
   Claude_域:
-    <<: *Domain
-    path: ./rules/Claude.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/claude.mrs"
+    <<: *Classical
+    path: ./rules/Claude.list
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Claude/Claude.list"
   Cloudflare_域:
     <<: *Domain
     path: ./rules/Cloudflare.mrs
