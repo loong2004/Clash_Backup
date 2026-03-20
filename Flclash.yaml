@@ -603,6 +603,16 @@ rules:
   - PROCESS-NAME,com.google.android.apps.bard,AI
   - PROCESS-NAME,com.openai.chatgpt,AI
   - RULE-SET,OpenAI_域,AI
+  - DOMAIN-SUFFIX,bard.google.com,AI
+  - DOMAIN-SUFFIX,gemini.google.com,AI
+  - DOMAIN,ai.google.dev,AI
+  - DOMAIN-SUFFIX,makersuite.google.com,AI
+  - DOMAIN,alkalicore-pa.clients6.google.com,AI
+  - DOMAIN,alkalimakersuite-pa.clients6.google.com,AI
+  - DOMAIN-SUFFIX,generativeai.google,AI
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,AI
+  - DOMAIN-SUFFIX,geller-pa.googleapis.com,AI
+  - DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com,AI
   - RULE-SET,Gemini_域,AI
   - RULE-SET,Claude_域,AI
   - RULE-SET,Google_域,Google
