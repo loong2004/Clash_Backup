@@ -52,6 +52,7 @@ DOMAIN-SUFFIX,qlogo.cn
 # ==============================================
 # 音乐解析与网易云资源 
 DOMAIN-SUFFIX,meting.js
+DOMAIN,v13.zuidazym3u8.com
 DOMAIN-SUFFIX,126.net
 DOMAIN-SUFFIX,127.net
 DOMAIN-SUFFIX,uomg.com
