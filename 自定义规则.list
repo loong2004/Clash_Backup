@@ -59,6 +59,12 @@ DOMAIN-SUFFIX,uomg.com
 PROCESS-NAME,com.netease.cloudmusic
 PROCESS-NAME,cn.kuwo.player
 PROCESS-NAME,cn.aqzscn.stream_music
+DOMAIN,v13.zuidazym3u8.com
+DOMAIN,v3.zuidazym3u8.com
+DOMAIN,zuidazym3u8.com
+DOMAIN-SUFFIX,zuidazym3u8.com
+
+
 
 # ==============================================
 # 5. 个人站点域名 (根据卡片链接整合)
