@@ -144,7 +144,7 @@ dns:
   listen: 0.0.0.0:1053
   enhanced-mode: fake-ip # redir-host
   fake-ip-range: 198.18.0.0/16
-  fake-ip-range6: fdfe:dcba:9876::/48
+  fake-ip-range6: fdfe:dcba:9876::1/64
   fake-ip-filter:
     - "RULE-SET:CN_域"
     - "RULE-SET:Private_域"
@@ -304,10 +304,10 @@ proxy-groups:
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/No-ads-all.svg"
     type: select
     proxies:
+      - PASS
+      - REJECT-DROP 
       - ⛔️ 禁止·拒绝连接
       - 🌐 DNS_Hijack
-      - REJECT-DROP
-      - PASS
   - name: WebRTC
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@main/app/icon/WebRTC.svg"
     type: select
@@ -398,7 +398,7 @@ rule-providers:
   No-ads-all_域:
     <<: *Domain
     path: ./rules/No-ads-all.mrs
-    url: "https://anti-ad.net/mihomo.mrs"
+    url: "https://cdn.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Clash.mrs"
   XiaoHongShu_域:
     <<: *Domain
     path: ./rules/XiaoHongShu.mrs
