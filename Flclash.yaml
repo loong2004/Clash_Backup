@@ -629,6 +629,10 @@ rules:
   - RULE-SET,Microsoft_域,Microsoft
   - RULE-SET,Telegram_域,Telegram
   - RULE-SET,Telegram_IP,Telegram,no-resolve
+  - PROCESS-NAME,com.hpbr.bosszhipin,🌐 本机·本地直连
+  - DOMAIN-SUFFIX,zhipin.com,🌐 本机·本地直连
+  - DOMAIN-SUFFIX,bosszhipin.com,🌐 本机·本地直连
+  - DOMAIN-KEYWORD,bosszhipin,🌐 本机·本地直连
   - RULE-SET,Private_域,🌐 本机·本地直连
   - RULE-SET,Private_IP,🌐 本机·本地直连,no-resolve
   - RULE-SET,CN_域,🌐 本机·本地直连
