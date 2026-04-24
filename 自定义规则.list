@@ -28,6 +28,7 @@ DOMAIN-SUFFIX,wttr.in
 # GitHub 贡献图表
 DOMAIN-SUFFIX,rshah.org
 DOMAIN,c1.rrcdnbf5.com
+DOMAIN-SUFFIX,xpagecn.com
 
 # ==============================================
 # 3. 前端静态资源 CDN（JS / CSS / 字体）
