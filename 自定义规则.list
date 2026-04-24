@@ -1,6 +1,6 @@
 
 # ==============================================
-# 1. 局域网 & 特殊 IP 段 (直接连接)
+# 1. 局域网 & 特殊 IP 段（直接连接）
 # ==============================================
 IP-CIDR,10.0.0.0/8
 IP-CIDR,172.16.0.0/12
@@ -10,26 +10,27 @@ IP-CIDR,43.248.11.0/24
 IP-CIDR6,fc00::/7
 
 # ==============================================
-# 2. 导航页核心功能 API (必须放行以维持页面正常)
+# 2. 导航页核心功能 API（必须放行）
 # ==============================================
-# 随机二次元背景 API 
+# 随机二次元背景 API
 DOMAIN-SUFFIX,paugram.com
 DOMAIN-SUFFIX,s1.fengbao9.com
 DOMAIN-SUFFIX,fengbao9.com
 DOMAIN-SUFFIX,jwnzn.com
 DOMAIN-SUFFIX,wx.jwnzn.com
 DOMAIN,wx.jwnzn.com
-# 一言 (Hitokoto) 问候语 
+# 一言（Hitokoto）问候语
 DOMAIN-SUFFIX,hitokoto.cn
 DOMAIN-KEYWORD,hitokoto
-# 天气服务 (wttr.in) 
+DOMAIN-KEYWORD,xpage
+# 天气服务（wttr.in）
 DOMAIN-SUFFIX,wttr.in
 # GitHub 贡献图表
 DOMAIN-SUFFIX,rshah.org
 DOMAIN,c1.rrcdnbf5.com
 
 # ==============================================
-# 3. 前端静态资源 CDN (加速 JS/CSS/字体加载)
+# 3. 前端静态资源 CDN（JS / CSS / 字体）
 # ==============================================
 # 页面使用的主要 CDN
 DOMAIN-SUFFIX,elemecdn.com
@@ -40,7 +41,7 @@ DOMAIN-SUFFIX,baomitu.com
 DOMAIN-SUFFIX,bytecdntp.com
 DOMAIN-SUFFIX,upaiyun.com
 
-# 大厂静态资源 (Iconfont/字体)
+# 大厂静态资源（Iconfont / 字体）
 DOMAIN-SUFFIX,alicdn.com
 DOMAIN-SUFFIX,bdstatic.com
 DOMAIN-SUFFIX,gtimg.cn
@@ -48,9 +49,9 @@ DOMAIN-SUFFIX,gtimg.com
 DOMAIN-SUFFIX,qlogo.cn
 
 # ==============================================
-# 4. 媒体与音乐服务 (APlayer/Meting)
+# 4. 媒体与音乐服务（APlayer / Meting）
 # ==============================================
-# 音乐解析与网易云资源 
+# 音乐解析与网易云资源
 DOMAIN-SUFFIX,meting.js
 DOMAIN,v13.zuidazym3u8.com
 DOMAIN-SUFFIX,126.net
@@ -64,29 +65,30 @@ DOMAIN,v3.zuidazym3u8.com
 DOMAIN,zuidazym3u8.com
 DOMAIN-SUFFIX,zuidazym3u8.com
 
-
-
 # ==============================================
-# 5. 个人站点域名 (根据卡片链接整合)
+# 5. 个人站点域名（根据卡片链接整合）
 # ==============================================
 DOMAIN,pan.seu.edu.cn
 
 # ==============================================
-# 6. 社交/工具/大厂服务 (原有规则)
+# 6. 教育网 / 镜像服务
 # ==============================================
-# 镜像与教育网
 DOMAIN,mirrors.tuna.tsinghua.edu.cn
 DOMAIN,mirrors.aliyun.com
 DOMAIN-SUFFIX,edu.cn
 
-# 手机品牌系统服务 (小米/华为)
+# ==============================================
+# 7. 手机品牌系统服务（小米 / 华为）
+# ==============================================
 DOMAIN,api.installer.xiaomi.com
 DOMAIN-SUFFIX,thm.market.xiaomi.com
 DOMAIN-SUFFIX,api.vip.miui.com
 DOMAIN-KEYWORD,huawei
 DOMAIN-SUFFIX,huaweicloud.com
 
-# 常用 App 进程 (哔哩哔哩/小红书/腾讯/高德/京东)
+# ==============================================
+# 8. 常用 App 进程（哔哩哔哩 / 小红书 / 腾讯 / 高德 / 京东）
+# ==============================================
 PROCESS-NAME,tv.danmaku.bili
 PROCESS-PATH,tv.danmaku.bili
 PROCESS-PATH,com.xingin.xhs
@@ -95,20 +97,24 @@ PROCESS-NAME,com.autonavi.minimap
 PROCESS-NAME,com.jingdong.app.mall
 DOMAIN-SUFFIX,jd.com
 
-# 游戏 (米哈游)
+# ==============================================
+# 9. 游戏（米哈游）
+# ==============================================
 PROCESS-NAME-REGEX,com.mihoyo.*
 DOMAIN-SUFFIX,yuanshen.com
 DOMAIN-SUFFIX,mihoyo.com
 DOMAIN-SUFFIX,hoyoverse.com
 DOMAIN-KEYWORD,yuanshen
 
-# 工具与网盘
+# ==============================================
+# 10. 工具与网盘
+# ==============================================
 DOMAIN-SUFFIX,189.cn
 DOMAIN-KEYWORD,lanzou
 DOMAIN-SUFFIX,s2.loli.net
 DOMAIN-SUFFIX,hdslb.com
 
 # ==============================================
-# 7. 自定义放行规则 (手动补充区域)
+# 11. 自定义放行规则（手动补充区域）
 # ==============================================
 # DOMAIN,dl.google.com
