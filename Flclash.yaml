@@ -133,6 +133,7 @@ tun:
     - com.android.settings
     - com.qti.qcc
     - com.sec.epdg
+    - com.seu.campus
     - com.sec.imsservice # 三星专供 ↑ 范围
     # 非三星用户不必理会，三星用户需自行取消注释 不可使用include-package
 # —————————
