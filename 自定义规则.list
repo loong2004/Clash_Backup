@@ -77,6 +77,8 @@ DOMAIN,pan.seu.edu.cn
 DOMAIN,mirrors.tuna.tsinghua.edu.cn
 DOMAIN,mirrors.aliyun.com
 DOMAIN-SUFFIX,edu.cn
+DOMAIN-SUFFIX,seu.edu.cn
+DOMAIN,seu.edu.cn
 
 # ==============================================
 # 7. 手机品牌系统服务（小米 / 华为）
