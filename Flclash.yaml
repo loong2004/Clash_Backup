@@ -279,6 +279,9 @@ proxy-groups:
   - name: Cloudflare
     icon: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Cloudflare_Logo.svg"
     <<: *proxy_groups
+  - name: YouTube Music
+    icon: "https://www.svgrepo.com/show/505120/youtube-music.svg"
+    <<: *proxy_groups
 
 
 
@@ -545,6 +548,10 @@ rule-providers:
     <<: *Domain
     path: ./rules/Cloudflare.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cloudflare.mrs"
+  Youtube_Music_域:
+    <<: *Classical
+    path: ./rules/ytb_music.list
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTubeMusic.list"
 
 
 
@@ -600,6 +607,9 @@ rules:
   - RULE-SET,Twitter_域,Twitter(X)
   - RULE-SET,Twitter_IP,Twitter(X),no-resolve
   - RULE-SET,YouTube_域,YouTube
+  - RULE-SET,Youtube_Music_域,YouTube Music
+  - PROCESS-NAME,com.google.android.apps.youtube.music,YouTube Music
+  - DOMAIN,music.youtube.com,YouTube Music
   - RULE-SET,GoogleFCM_域,GoogleFCM
   - PROCESS-NAME,com.google.android.apps.bard,AI
   - PROCESS-NAME,com.openai.chatgpt,AI
