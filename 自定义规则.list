@@ -44,6 +44,7 @@ DOMAIN-SUFFIX,upaiyun.com
 
 # 大厂静态资源（Iconfont / 字体）
 DOMAIN-SUFFIX,alicdn.com
+DOMAIN-SUFFIX,uy5.net
 DOMAIN-SUFFIX,bdstatic.com
 DOMAIN-SUFFIX,gtimg.cn
 DOMAIN-SUFFIX,gtimg.com
