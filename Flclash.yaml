@@ -105,7 +105,7 @@ sniffer:
   force-domain:
     - "+.v2ex.com"
   skip-domain: # 如遇需内部通信的应用请放行该域名
-    - "Mijia Cloud"
+    - "+.io.mi.com"
 # —————————
 # 网卡模块
 # 如需使用 建议先阅读文档：https://wiki.metacubex.one/config/inbound/tun/
@@ -118,7 +118,6 @@ tun:
     - tcp://any:53
   udp-timeout: 300
   auto-route: true
-  strict-route: true
   auto-redirect: false
   auto-detect-interface: true
   # 如使用黑白名单这里需排除
@@ -137,42 +136,46 @@ tun:
     - com.sec.imsservice # 三星专供 ↑ 范围
     # 非三星用户不必理会，三星用户需自行取消注释 不可使用include-package
 # —————————
+# Host
+hosts: # 如有需求可以使用模块自带的本地挂载，不建议放这里
+  services.googleapis.cn: services.googleapis.com
+# —————————
 # DNS模块
 # 请勿随意变动！
 dns:
   enable: true
   ipv6: false
   listen: 0.0.0.0:1053
-  enhanced-mode: fake-ip # redir-host
   fake-ip-range: 198.18.0.0/16
-  fake-ip-range6: fdfe:dcba:9876::1/64
+  fake-ip-range6: fdfe:dcba:9876::/64
+  enhanced-mode: fake-ip # redir-host
+  fake-ip-filter-mode: rule
   fake-ip-filter:
-    - "RULE-SET:CN_域"
-    - "RULE-SET:Private_域"
-    - "RULE-SET:GoogleFCM_域"
-    - "RULE-SET:自定义规则"
+    - "RULE-SET,CN_域,real-ip"
+    - "RULE-SET,Private_域,real-ip"
+    - "RULE-SET,GoogleFCM_域,real-ip"
+    - "RULE-SET,自定义规则,real-ip"
+    - "MATCH,fake-ip"
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+    - 1.1.1.1
   proxy-server-nameserver:
-    - https://1.12.12.12:443/dns-query#🌐 本机·本地直连&h3=false
-    - https://120.53.53.53:443/dns-query#🌐 本机·本地直连&h3=false
-    - https://223.5.5.5:443/dns-query#🌐 本机·本地直连&h3=true
-    - https://223.6.6.6:443/dns-query#🌐 本机·本地直连&h3=true
+    - https://doh.pub/dns-query#🌐 本机·本地直连&h3=false
+    - https://dns.alidns.com/dns-query#🌐 本机·本地直连&h3=true
   nameserver-policy:
     "RULE-SET:CN_域,Microsoft_域,Apple_域":
-      - https://1.12.12.12:443/dns-query#🌐 本机·本地直连&h3=false
-      - https://120.53.53.53:443/dns-query#🌐 本机·本地直连&h3=false
-      - https://223.5.5.5:443/dns-query#🌐 本机·本地直连&h3=true
-      - https://223.6.6.6:443/dns-query#🌐 本机·本地直连&h3=true
+      - https://doh.pub/dns-query#🌐 本机·本地直连&h3=false
+      - https://dns.alidns.com/dns-query#🌐 本机·本地直连&h3=true
   nameserver:
     # Google
-    - https://8.8.8.8:443/dns-query#DNS连接&h3=true
-    - https://8.8.4.4:443/dns-query#DNS连接&h3=true
+    - https://dns.google/dns-query#DNS连接&h3=true
     # Cloudflare
-    - https://1.1.1.1:443/dns-query#DNS连接&h3=true
-    - https://1.0.0.1:443/dns-query#DNS连接&h3=true
+    - https://cloudflare-dns.com/dns-query#DNS连接&h3=true
   direct-nameserver:
-    - 1.12.12.12
-    - 223.6.6.6
-  
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+    - 192.168.1.1
 # —————————
 proxies:
   - {name: 🌐 本机·本地直连, type: direct, udp: true}
