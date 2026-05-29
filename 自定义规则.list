@@ -50,6 +50,8 @@ DOMAIN-SUFFIX,bdstatic.com
 DOMAIN-SUFFIX,gtimg.cn
 DOMAIN-SUFFIX,gtimg.com
 DOMAIN-SUFFIX,qlogo.cn
+DOMAIN-SUFFIX,maowushi.com
+DOMAIN,maowushi.com
 
 # ==============================================
 # 4. 媒体与音乐服务（APlayer / Meting）
