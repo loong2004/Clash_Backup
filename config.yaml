@@ -3,7 +3,7 @@
 mixed-port: 7890
 redir-port: 7891
 tproxy-port: 1536
-ipv6: false
+ipv6: true
 mode: Rule
 allow-lan: true
 disable-keep-alive: true
@@ -144,7 +144,7 @@ hosts: # 如有需求可以使用模块自带的本地挂载，不建议放这�
 # 请勿随意变动！
 dns:
   enable: true
-  ipv6: false
+  ipv6: true
   listen: 0.0.0.0:1053
   fake-ip-range: 198.18.0.0/16
   fake-ip-range6: fdfe:dcba:9876::/64
