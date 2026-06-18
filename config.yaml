@@ -45,44 +45,44 @@ p: &p
         - "clash.meta"
         - "mihomo"
 # —————————
-# 订阅地址相关
+# 订阅地址相关（!!! 请勿删除此注释行，模块更新时将根据此行备份/还原您的订阅配置块 !!!）
 A: &A
   filter: "^(?!.*(套餐|重置|剩余|到期|订阅|群|账户|流量|有效期|时间|官网|失联|余额)).*$"
   use:
-  - 1.主要地址
-  - 2.备用地址
-  - 3.额外地址
+  - "1.主要地址"
+  - "2.备用地址"
+  - "3.额外地址"
 All: &All
   type: url-test
   use:
-  - 1.主要地址
-  - 2.备用地址
-  - 3.额外地址
-proxy-providers: # ← 此函数位置请勿变动！此为模块更新时备份恢复订阅变量范围 ↓
-  1.主要地址: # 如遇订阅加载不出来，请尝试切换ua
+  - "1.主要地址"
+  - "2.备用地址"
+  - "3.额外地址"
+proxy-providers:
+  "1.主要地址":
     <<: *p
     override:
       additional-prefix: "Main："
       <<: *proxy_fp
-    path: ./proxies/1.主要地址.yaml
+    path: "./proxies/1.主要地址.yaml"
     url: "此处引入您的Clash订阅链接地址"
-  2.备用地址:
+  "2.备用地址":
     <<: *p
     override:
       additional-prefix: "Minor："
       <<: *proxy_fp
-    path: ./proxies/2.备用地址.yaml
+    path: "./proxies/2.备用地址.yaml"
     url: "此处引入您的Clash订阅链接地址"
-  3.额外地址:
+  "3.额外地址":
     <<: *p
     override:
       additional-prefix: "Additi："
       <<: *proxy_fp
-    path: ./proxies/3.额外地址.yaml
+    path: "./proxies/3.额外地址.yaml"
     url: "此处引入您的Clash订阅链接地址"
 # —————————
 # 节点记忆
-profile: # ← 此函数位置请勿变动！此为模块更新时备份恢复订阅变量范围 ↑
+profile: # ← 此行位置请勿变动！此为模块更新时备份恢复订阅的【结束标记】 ↑
   store-selected: true
   store-fake-ip: true
 # —————————
@@ -167,8 +167,8 @@ dns:
     - https://8.8.8.8:443/dns-query#DNS连接&h3=true
     - https://8.8.4.4:443/dns-query#DNS连接&h3=true
     # Cloudflare
-    - https://1.1.1.1:443/dns-query#DNS连接&h3=true
-    - https://1.0.0.1:443/dns-query#DNS连接&h3=true
+    - https://1.1.1.1:443/dns-query#DNS连接&h3=false
+    - https://1.0.0.1:443/dns-query#DNS连接&h3=false
   direct-nameserver:
     - 1.12.12.12
     - 223.6.6.6
