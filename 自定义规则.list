@@ -1,6 +1,7 @@
 
+
 # ==============================================
-# 1. 局域网 & 特殊 IP 段（直接连接）
+# 1. 本地网络 / 特殊 IP 段（直连）
 # ==============================================
 IP-CIDR,10.0.0.0/8
 IP-CIDR,172.16.0.0/12
@@ -10,7 +11,7 @@ IP-CIDR,43.248.11.0/24
 IP-CIDR6,fc00::/7
 
 # ==============================================
-# 2. 导航页核心功能 API（必须放行）
+# 2. 导航页 / 站点核心功能（必须放行）
 # ==============================================
 # 随机二次元背景 API
 DOMAIN-SUFFIX,paugram.com
@@ -20,13 +21,16 @@ DOMAIN-SUFFIX,jwnzn.com
 DOMAIN-SUFFIX,wx.jwnzn.com
 DOMAIN,wx.jwnzn.com
 DOMAIN,51cgm34.com
+
 # 一言（Hitokoto）问候语
 DOMAIN-SUFFIX,hitokoto.cn
 DOMAIN-KEYWORD,hitokoto
 DOMAIN-KEYWORD,xpage
-# 天气服务（wttr.in）
+
+# 天气服务
 DOMAIN-SUFFIX,wttr.in
-# GitHub 贡献图表
+
+# GitHub 贡献图表 / 相关页面
 DOMAIN-SUFFIX,rshah.org
 DOMAIN,c1.rrcdnbf5.com
 DOMAIN-SUFFIX,xpagecn.com
@@ -34,52 +38,52 @@ DOMAIN-SUFFIX,xpagecn.com
 # ==============================================
 # 3. 前端静态资源 CDN（JS / CSS / 字体）
 # ==============================================
-# 页面使用的主要 CDN
-DOMAIN-SUFFIX,elemecdn.com
+# 常见公共 CDN
+DOMAIN-SUFFIX,baomitu.com
 DOMAIN-SUFFIX,bootcdn.net
 DOMAIN-SUFFIX,bootcss.com
-DOMAIN-SUFFIX,staticfile.org
-DOMAIN-SUFFIX,baomitu.com
 DOMAIN-SUFFIX,bytecdntp.com
+DOMAIN-SUFFIX,elemecdn.com
+DOMAIN-SUFFIX,staticfile.org
 DOMAIN-SUFFIX,upaiyun.com
 
-# 大厂静态资源（Iconfont / 字体）
+# 大厂静态资源 / 图标字体
 DOMAIN-SUFFIX,alicdn.com
-DOMAIN-SUFFIX,uy5.net
 DOMAIN-SUFFIX,bdstatic.com
 DOMAIN-SUFFIX,gtimg.cn
 DOMAIN-SUFFIX,gtimg.com
 DOMAIN-SUFFIX,qlogo.cn
+DOMAIN-SUFFIX,uy5.net
 DOMAIN-SUFFIX,maowushi.com
 DOMAIN,maowushi.com
 
 # ==============================================
-# 4. 媒体与音乐服务（APlayer / Meting）
+# 4. 媒体 / 音乐 / 视频资源（APlayer / Meting）
 # ==============================================
-# 音乐解析与网易云资源
+# 音乐解析与网易云相关资源
 DOMAIN-SUFFIX,meting.js
-DOMAIN,v13.zuidazym3u8.com
 DOMAIN-SUFFIX,126.net
 DOMAIN-SUFFIX,127.net
 DOMAIN-SUFFIX,uomg.com
-PROCESS-NAME,com.netease.cloudmusic
-PROCESS-NAME,cn.kuwo.player
-PROCESS-NAME,cn.aqzscn.stream_music
+DOMAIN-SUFFIX,qiimeng.com
+DOMAIN,qiimeng.com
 DOMAIN,v13.zuidazym3u8.com
 DOMAIN,v3.zuidazym3u8.com
 DOMAIN,zuidazym3u8.com
-DOMAIN,qiimeng.com
-DOMAIN-SUFFIX,qiimeng.com
 DOMAIN-SUFFIX,zuidazym3u8.com
 
-# ==============================================
-# 5. 个人站点域名（根据卡片链接整合）
-# ==============================================
-DOMAIN,pan.seu.edu.cn
+# 本地客户端进程
+PROCESS-NAME,com.netease.cloudmusic
+PROCESS-NAME,cn.kuwo.player
+PROCESS-NAME,cn.aqzscn.stream_music
 
 # ==============================================
-# 6. 教育网 / 镜像服务
+# 5. 个人站点 / 学习 / 教育服务
 # ==============================================
+# 个人站点
+DOMAIN,pan.seu.edu.cn
+
+# 教育网 / 镜像服务
 DOMAIN,mirrors.tuna.tsinghua.edu.cn
 DOMAIN,mirrors.aliyun.com
 DOMAIN-SUFFIX,edu.cn
@@ -87,17 +91,18 @@ DOMAIN-SUFFIX,seu.edu.cn
 DOMAIN,seu.edu.cn
 
 # ==============================================
-# 7. 手机品牌系统服务（小米 / 华为）
+# 6. 手机品牌 / 系统服务（小米 / 华为）
 # ==============================================
 DOMAIN,api.installer.xiaomi.com
-DOMAIN-SUFFIX,thm.market.xiaomi.com
 DOMAIN-SUFFIX,api.vip.miui.com
+DOMAIN-SUFFIX,thm.market.xiaomi.com
 DOMAIN-KEYWORD,huawei
 DOMAIN-SUFFIX,huaweicloud.com
 
 # ==============================================
-# 8. 常用 App 进程（哔哩哔哩 / 小红书 / 腾讯 / 高德 / 京东）
+# 7. 常用 App / 平台服务
 # ==============================================
+# 哔哩哔哩 / 小红书 / 腾讯 / 高德 / 京东
 PROCESS-NAME,tv.danmaku.bili
 PROCESS-PATH,tv.danmaku.bili
 PROCESS-PATH,com.xingin.xhs
@@ -107,7 +112,7 @@ PROCESS-NAME,com.jingdong.app.mall
 DOMAIN-SUFFIX,jd.com
 
 # ==============================================
-# 9. 游戏（米哈游）
+# 8. 游戏类（米哈游）
 # ==============================================
 PROCESS-NAME-REGEX,com.mihoyo.*
 DOMAIN-SUFFIX,yuanshen.com
@@ -116,7 +121,7 @@ DOMAIN-SUFFIX,hoyoverse.com
 DOMAIN-KEYWORD,yuanshen
 
 # ==============================================
-# 10. 工具与网盘
+# 9. 工具 / 网盘 / 下载类
 # ==============================================
 DOMAIN-SUFFIX,189.cn
 DOMAIN-KEYWORD,lanzou
@@ -124,6 +129,6 @@ DOMAIN-SUFFIX,s2.loli.net
 DOMAIN-SUFFIX,hdslb.com
 
 # ==============================================
-# 11. 自定义放行规则（手动补充区域）
+# 10. 手动补充区域（按需追加）
 # ==============================================
 # DOMAIN,dl.google.com
