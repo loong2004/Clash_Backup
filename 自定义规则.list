@@ -15,6 +15,7 @@ IP-CIDR6,fc00::/7
 # ==============================================
 # 随机二次元背景 API
 DOMAIN-SUFFIX,paugram.com
+DOMAIN-SUFFIX,885123.xyz
 DOMAIN-SUFFIX,s1.fengbao9.com
 DOMAIN-SUFFIX,fengbao9.com
 DOMAIN-SUFFIX,jwnzn.com
