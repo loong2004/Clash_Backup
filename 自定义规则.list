@@ -133,3 +133,5 @@ DOMAIN-SUFFIX,hdslb.com
 # 10. 手动补充区域（按需追加）
 # ==============================================
 # DOMAIN,dl.google.com
+DOMAIN,catbee.online
+DOMAIN,yapi.asia
