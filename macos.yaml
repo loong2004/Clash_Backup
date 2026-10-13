@@ -107,8 +107,7 @@ sniffer:
 # 如需使用 建议先阅读文档：https://wiki.metacubex.one/config/inbound/tun/
 tun:
   enable: true
-  device: Meta
-  stack: gvisor
+  stack: mixed
   dns-hijack:
     - any:53
     - tcp://any:53
@@ -156,7 +155,6 @@ dns:
   direct-nameserver:
     - 1.12.12.12
     - 223.6.6.6
-    - 192.168.1.1
 # —————————
 proxies:
   - {name: 🌐 本机·本地直连, type: direct, udp: true}
@@ -266,8 +264,12 @@ proxy-groups:
   - name: YouTube Music
     icon: "https://www.svgrepo.com/show/505120/youtube-music.svg"
     <<: *proxy_groups
-
-
+  - name: Muse
+    icon: "https://pic.soomin.de5.net/api/cfile/AgACAgUAAyEGAATcOHtjAAIObmrOMjsUj3D5O4d0I63ANNaCHQwFAAJDFGsbvIVxVvNnIC3FA8tDAQADAgADeAADPQQ"
+    <<: *proxy_groups
+  - name: Gemini
+    icon: "https://i.pinimg.com/474x/bd/43/8c/bd438c709ac315365e05849f195b421f.jpg"
+    <<: *proxy_groups
 
 
 
@@ -452,9 +454,9 @@ rule-providers:
     path: ./rules/Microsoft.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft.mrs"
   Copilot_域:
-    <<: *Domain
-    path: ./rules/Copilot.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/bing.mrs"
+    <<: *Classical
+    path: ./rules/Copilot.list
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Copilot/Copilot.list"
   Apple_域:
     <<: *Domain
     path: ./rules/Apple.mrs
@@ -588,31 +590,33 @@ rules:
   - RULE-SET,PayPal_域,PayPal
   - RULE-SET,LINE_域,LINE  
   - RULE-SET,TikTok_域,TikTok
+  - DOMAIN-SUFFIX,gemini.google.com,Gemini
+  - RULE-SET,Gemini_域,Gemini
   - RULE-SET,XAI_域,AI
   - RULE-SET,Twitter_域,Twitter(X)
   - RULE-SET,Twitter_IP,Twitter(X),no-resolve
   - RULE-SET,Youtube_Music_域,YouTube Music
   - RULE-SET,YouTube_域,YouTube
   - RULE-SET,GoogleFCM_域,GoogleFCM
+  - DOMAIN-SUFFIX,copilot.microsoft.com,AI
   - RULE-SET,Copilot_域,AI
   - RULE-SET,OpenAI_域,AI
-  - DOMAIN-SUFFIX,bard.google.com,AI
-  - DOMAIN-SUFFIX,gemini.google.com,AI
-  - DOMAIN,ai.google.dev,AI
-  - DOMAIN-SUFFIX,makersuite.google.com,AI
-  - DOMAIN,alkalicore-pa.clients6.google.com,AI
-  - DOMAIN,alkalimakersuite-pa.clients6.google.com,AI
-  - DOMAIN-SUFFIX,generativeai.google,AI
-  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,AI
-  - DOMAIN-SUFFIX,geller-pa.googleapis.com,AI
-  - DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com,AI
-  - RULE-SET,Gemini_域,AI
+  - DOMAIN-SUFFIX,bard.google.com,Gemini
+  - DOMAIN,ai.google.dev,Gemini
+  - DOMAIN-SUFFIX,makersuite.google.com,Gemini
+  - DOMAIN,alkalicore-pa.clients6.google.com,Gemini
+  - DOMAIN,alkalimakersuite-pa.clients6.google.com,Gemini
+  - DOMAIN-SUFFIX,generativeai.google,Gemini
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,Gemini
+  - DOMAIN-SUFFIX,geller-pa.googleapis.com,Gemini
+  - DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com,Gemini
   - RULE-SET,Claude_域,AI
   - RULE-SET,Google_域,Google
   - RULE-SET,Google_IP,Google,no-resolve
   - RULE-SET,Netflix_域,Netflix
   - RULE-SET,Netflix_IP,Netflix,no-resolve
   - RULE-SET,Spotify_域,Spotify
+  - DOMAIN-SUFFIX,muse.ai,Muse
   - RULE-SET,Threads_域,Meta
   - RULE-SET,Instagram_域,Meta
   - RULE-SET,Facebook_域,Meta
@@ -628,6 +632,6 @@ rules:
   - RULE-SET,Private_域,🌐 本机·本地直连
   - RULE-SET,Private_IP,🌐 本机·本地直连,no-resolve
   - RULE-SET,CN_域,🌐 本机·本地直连
-  - RULE-SET,CN_IP,🌐 本机·本地直连
+  - RULE-SET,CN_IP,🌐 本机·本地直连,no-resolve
   - MATCH,漏网之鱼
 # —————————
