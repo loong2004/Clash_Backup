@@ -83,6 +83,8 @@ PROCESS-NAME,cn.aqzscn.stream_music
 # ==============================================
 # 个人站点
 DOMAIN,pan.seu.edu.cn
+DOMAIN,aileaderme.top
+DOMAIN,885123.xyz
 
 # 教育网 / 镜像服务
 DOMAIN,mirrors.tuna.tsinghua.edu.cn
