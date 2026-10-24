@@ -85,6 +85,7 @@ PROCESS-NAME,cn.aqzscn.stream_music
 DOMAIN,pan.seu.edu.cn
 DOMAIN,aileaderme.top
 DOMAIN,885123.xyz
+DOMAIN-SUFFIX,885123.xyz
 
 # 教育网 / 镜像服务
 DOMAIN,mirrors.tuna.tsinghua.edu.cn
@@ -92,6 +93,7 @@ DOMAIN,mirrors.aliyun.com
 DOMAIN-SUFFIX,edu.cn
 DOMAIN-SUFFIX,seu.edu.cn
 DOMAIN,seu.edu.cn
+DOMAIN-SUFFIX,aileaderme.top
 
 # ==============================================
 # 6. 手机品牌 / 系统服务（小米 / 华为）
