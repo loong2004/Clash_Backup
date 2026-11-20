@@ -15,7 +15,6 @@ IP-CIDR6,fc00::/7
 # ==============================================
 # 随机二次元背景 API
 DOMAIN-SUFFIX,paugram.com
-DOMAIN-SUFFIX,885123.xyz
 DOMAIN-SUFFIX,s1.fengbao9.com
 DOMAIN-SUFFIX,fengbao9.com
 DOMAIN-SUFFIX,jwnzn.com
@@ -72,6 +71,7 @@ DOMAIN,v13.zuidazym3u8.com
 DOMAIN,v3.zuidazym3u8.com
 DOMAIN,zuidazym3u8.com
 DOMAIN-SUFFIX,zuidazym3u8.com
+DOMAIN-SUFFIX,sf-express.com
 
 # 本地客户端进程
 PROCESS-NAME,com.netease.cloudmusic
@@ -83,9 +83,6 @@ PROCESS-NAME,cn.aqzscn.stream_music
 # ==============================================
 # 个人站点
 DOMAIN,pan.seu.edu.cn
-DOMAIN,aileaderme.top
-DOMAIN,885123.xyz
-DOMAIN-SUFFIX,885123.xyz
 
 # 教育网 / 镜像服务
 DOMAIN,mirrors.tuna.tsinghua.edu.cn
@@ -93,7 +90,6 @@ DOMAIN,mirrors.aliyun.com
 DOMAIN-SUFFIX,edu.cn
 DOMAIN-SUFFIX,seu.edu.cn
 DOMAIN,seu.edu.cn
-DOMAIN-SUFFIX,aileaderme.top
 
 # ==============================================
 # 6. 手机品牌 / 系统服务（小米 / 华为）
