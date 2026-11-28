@@ -109,7 +109,6 @@ DOMAIN-SUFFIX,huaweicloud.com
 PROCESS-NAME,tv.danmaku.bili
 PROCESS-PATH,tv.danmaku.bili
 PROCESS-PATH,com.xingin.xhs
-PROCESS-NAME-REGEX,com.tencent.*
 PROCESS-NAME,com.autonavi.minimap
 PROCESS-NAME,com.jingdong.app.mall
 DOMAIN-SUFFIX,jd.com
@@ -117,7 +116,6 @@ DOMAIN-SUFFIX,jd.com
 # ==============================================
 # 8. 游戏类（米哈游）
 # ==============================================
-PROCESS-NAME-REGEX,com.mihoyo.*
 DOMAIN-SUFFIX,yuanshen.com
 DOMAIN-SUFFIX,mihoyo.com
 DOMAIN-SUFFIX,hoyoverse.com
